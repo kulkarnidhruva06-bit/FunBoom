@@ -311,24 +311,24 @@
     /* ───── CONTACT BUTTON ───── */
     #contactBtn {
       position: fixed;
-      top: 14px;
-      right: 18px;
+      top: 18px;
+      right: 22px;
       z-index: 200;
       font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
-      color: #555;
+      color: #444;
       background: #fff;
-      border: 1.5px solid #e0e0e0;
+      border: 2px solid #ddd;
       border-radius: 999px;
-      padding: 7px 14px;
+      padding: 11px 22px;
       cursor: pointer;
       letter-spacing: 0.04em;
       transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 3px 14px rgba(0,0,0,0.09);
       white-space: nowrap;
     }
-    #contactBtn:hover { background: #f5f5f5; border-color: #bbb; color: #222; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    #contactBtn:hover { background: #f5f5f5; border-color: #aaa; color: #111; box-shadow: 0 6px 22px rgba(0,0,0,0.13); transform: translateY(-1px); }
 
     /* ───── CONTACT PAGE ───── */
     #contact-overlay {
@@ -365,33 +365,33 @@
     .contact-card {
       background: #fff;
       border: 1.5px solid #eee;
-      border-radius: 20px;
-      padding: 44px 48px;
-      max-width: 420px;
-      width: 90%;
+      border-radius: 24px;
+      padding: 56px 60px;
+      max-width: 520px;
+      width: 92%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+      gap: 26px;
+      box-shadow: 0 12px 56px rgba(0,0,0,0.09);
     }
 
     .contact-icon {
-      width: 68px;
-      height: 68px;
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
       background: linear-gradient(135deg, #ea4335 0%, #fbbc05 35%, #34a853 65%, #4285f4 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
-      box-shadow: 0 4px 18px rgba(234,67,53,0.25);
+      font-size: 40px;
+      box-shadow: 0 6px 28px rgba(234,67,53,0.28);
       flex-shrink: 0;
     }
 
     .contact-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
+      font-size: 44px;
       letter-spacing: 0.1em;
       color: #111;
       text-align: center;
@@ -399,11 +399,11 @@
     }
 
     .contact-sub {
-      font-size: 13px;
-      color: #999;
+      font-size: 15px;
+      color: #888;
       text-align: center;
-      line-height: 1.65;
-      max-width: 280px;
+      line-height: 1.7;
+      max-width: 340px;
     }
 
     .contact-divider {
@@ -415,33 +415,33 @@
     .contact-email-box {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       background: #f8f8f8;
-      border: 1.5px solid #eee;
-      border-radius: 12px;
-      padding: 14px 20px;
+      border: 2px solid #eee;
+      border-radius: 16px;
+      padding: 18px 24px;
       width: 100%;
       transition: border-color 0.15s, box-shadow 0.15s;
       cursor: pointer;
       text-decoration: none;
     }
-    .contact-email-box:hover { border-color: #4285f4; box-shadow: 0 0 0 3px rgba(66,133,244,0.1); }
+    .contact-email-box:hover { border-color: #4285f4; box-shadow: 0 0 0 4px rgba(66,133,244,0.12); }
 
     .contact-email-dot {
-      width: 36px;
-      height: 36px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: linear-gradient(135deg, #ea4335, #fbbc05);
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 22px;
     }
 
     .contact-email-text { display: flex; flex-direction: column; gap: 1px; }
-    .contact-email-label { font-size: 10px; color: #bbb; letter-spacing: 0.1em; text-transform: uppercase; }
-    .contact-email-addr { font-size: 14px; font-weight: 500; color: #222; letter-spacing: 0.01em; }
+    .contact-email-label { font-size: 11px; color: #bbb; letter-spacing: 0.1em; text-transform: uppercase; }
+    .contact-email-addr { font-size: 17px; font-weight: 500; color: #222; letter-spacing: 0.01em; }
 
     .contact-tags {
       display: flex;
@@ -450,16 +450,16 @@
       justify-content: center;
     }
     .contact-tag {
-      font-size: 11px;
-      color: #888;
+      font-size: 13px;
+      color: #777;
       background: #f4f4f4;
       border-radius: 99px;
-      padding: 5px 12px;
+      padding: 8px 16px;
       letter-spacing: 0.04em;
     }
 
     .contact-footer {
-      font-size: 11px;
+      font-size: 13px;
       color: #ccc;
       text-align: center;
       letter-spacing: 0.06em;
@@ -1532,11 +1532,11 @@ window.addEventListener("DOMContentLoaded",function(){
 
       <div class="contact-divider"></div>
 
-      <a class="contact-email-box" href="mailto:dweebfish@gmail.com?subject=CreativityForAll.fun - Feedback">
+      <a class="contact-email-box" href="/cdn-cgi/l/email-protection#7a1e0d1f1f181c1309123a1d171b13165419151745090f18101f190e4739081f1b0e130c130e033c15083b1616541c0f145a575a3c1f1f1e181b1911">
         <div class="contact-email-dot">&#9993;</div>
         <div class="contact-email-text">
           <div class="contact-email-label">Email us at</div>
-          <div class="contact-email-addr">dweebfish@gmail.com</div>
+          <div class="contact-email-addr"><span class="__cf_email__" data-cfemail="b2d6c5d7d7d0d4dbc1daf2d5dfd3dbde9cd1dddf">[email&#160;protected]</span></div>
         </div>
       </a>
 
@@ -1546,13 +1546,3 @@ window.addEventListener("DOMContentLoaded",function(){
         <div class="contact-tag">&#127775; Feedback</div>
         <div class="contact-tag">&#129321; Just saying hi</div>
       </div>
-
-      <div class="contact-divider"></div>
-
-      <div class="contact-footer">CREATIVITYFORALL.FUN &nbsp;&bull;&nbsp; BY DK &amp; SEEDY</div>
-
-    </div>
-  </div>
-
-</body>
-</html>
