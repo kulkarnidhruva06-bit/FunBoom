@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CreativityForAll.fun</title>
@@ -308,10 +307,168 @@
     }
     .hoop-move-label.left  { left: -8px; }
     .hoop-move-label.right { right: -8px; }
+
+    /* ───── CONTACT BUTTON ───── */
+    #contactBtn {
+      position: fixed;
+      top: 14px;
+      right: 18px;
+      z-index: 200;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: #555;
+      background: #fff;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 999px;
+      padding: 7px 14px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      white-space: nowrap;
+    }
+    #contactBtn:hover { background: #f5f5f5; border-color: #bbb; color: #222; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+    /* ───── CONTACT PAGE ───── */
+    #contact-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: #fff;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      overflow-y: auto;
+    }
+    #contact-overlay.active { display: flex; }
+
+    .contact-back {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      font-size: 12px;
+      color: #aaa;
+      background: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 99px;
+      padding: 6px 16px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.05em;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .contact-back:hover { color: #333; border-color: #aaa; }
+
+    .contact-card {
+      background: #fff;
+      border: 1.5px solid #eee;
+      border-radius: 20px;
+      padding: 44px 48px;
+      max-width: 420px;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+    }
+
+    .contact-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ea4335 0%, #fbbc05 35%, #34a853 65%, #4285f4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 18px rgba(234,67,53,0.25);
+      flex-shrink: 0;
+    }
+
+    .contact-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.1em;
+      color: #111;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .contact-sub {
+      font-size: 13px;
+      color: #999;
+      text-align: center;
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    .contact-divider {
+      width: 100%;
+      height: 1px;
+      background: #f0f0f0;
+    }
+
+    .contact-email-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f8f8f8;
+      border: 1.5px solid #eee;
+      border-radius: 12px;
+      padding: 14px 20px;
+      width: 100%;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .contact-email-box:hover { border-color: #4285f4; box-shadow: 0 0 0 3px rgba(66,133,244,0.1); }
+
+    .contact-email-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ea4335, #fbbc05);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .contact-email-text { display: flex; flex-direction: column; gap: 1px; }
+    .contact-email-label { font-size: 10px; color: #bbb; letter-spacing: 0.1em; text-transform: uppercase; }
+    .contact-email-addr { font-size: 14px; font-weight: 500; color: #222; letter-spacing: 0.01em; }
+
+    .contact-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .contact-tag {
+      font-size: 11px;
+      color: #888;
+      background: #f4f4f4;
+      border-radius: 99px;
+      padding: 5px 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-footer {
+      font-size: 11px;
+      color: #ccc;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
   </style>
 </head>
 <body>
-<div id="visitorCount" style="position:fixed;top:14px;right:18px;font-family:'DM Sans',sans-serif;font-size:11px;color:#aaa;letter-spacing:0.08em;z-index:100;"></div>
+  <button id="contactBtn" onclick="openContact()">Bugs or Recommendations? Contact us!</button>
+
   <div id="homepage">
     <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:44px;">
       <div class="site-title">CREATIVITYFORALL.FUN</div>
@@ -470,8 +627,10 @@ var layers = [
   { name:"Center", depth:6371, fact:"You made it. You are at the exact center of the Earth. There is nothing below you. Every direction is up. The temperature here is around 6,000 degrees C. The pressure is 3.6 million atmospheres. No human-made object has ever come close to this place, and we probably know more about the surface of Mars than about what happens right here beneath our feet." }
 ];
 var current = 0;
-function openGame() { document.getElementById("game-overlay").classList.add("active"); document.getElementById("intro-panel").style.display="flex"; document.getElementById("dive-panel").classList.remove("active"); resetStrips(); }
-function closeGame() { document.getElementById("game-overlay").classList.remove("active"); current=0; resetStrips(); }
+function openGame() {
+    document.getElementById("contactBtn").style.display = "none"; document.getElementById("game-overlay").classList.add("active"); document.getElementById("intro-panel").style.display="flex"; document.getElementById("dive-panel").classList.remove("active"); resetStrips(); }
+function closeGame() {
+    document.getElementById("contactBtn").style.display = "block"; document.getElementById("game-overlay").classList.remove("active"); current=0; resetStrips(); }
 function resetStrips() { document.querySelectorAll("#strips .layer").forEach(function(s){s.style.flex="";}); document.getElementById("progressFill").style.width="0%"; document.getElementById("progressLabel").textContent="0 / 6,371 km"; }
 function startDive() { document.getElementById("intro-panel").style.display="none"; document.getElementById("dive-panel").classList.add("active"); current=0; showLayer(0); }
 function showLayer(i) {
@@ -558,8 +717,10 @@ var minerals = [
 var TOTAL = 12;
 var matsQueue=[],matsIndex=0,matsScore=0,matsAnswered=false;
 
-function openMats() { document.getElementById("mats-overlay").classList.add("active"); startMats(); }
-function closeMats() { document.getElementById("mats-overlay").classList.remove("active"); }
+function openMats() {
+    document.getElementById("contactBtn").style.display = "none"; document.getElementById("mats-overlay").classList.add("active"); startMats(); }
+function closeMats() {
+    document.getElementById("contactBtn").style.display = "block"; document.getElementById("mats-overlay").classList.remove("active"); }
 function startMats() {
   matsScore=0; matsIndex=0; matsAnswered=false;
   matsQueue=shuffle(minerals.slice()).slice(0,TOTAL);
@@ -776,6 +937,7 @@ window.addEventListener("DOMContentLoaded",function(){
   }
 
   function openColorMaker() {
+    document.getElementById("contactBtn").style.display = "none";
     document.getElementById("cm-overlay").classList.add("active");
     cmSelected = [];
     cmSavedMixes = [];
@@ -783,7 +945,8 @@ window.addEventListener("DOMContentLoaded",function(){
     renderCMChips();
     updateCMMix();
   }
-  function closeCM() { document.getElementById("cm-overlay").classList.remove("active"); }
+  function closeCM() {
+    document.getElementById("contactBtn").style.display = "block"; document.getElementById("cm-overlay").classList.remove("active"); }
   window.addEventListener("mouseup",  function(){ ballMoveIntent=0; });
   window.addEventListener("touchend",  function(){ ballMoveIntent=0; });
 
@@ -792,6 +955,7 @@ window.addEventListener("DOMContentLoaded",function(){
   var hoopsAnim = null;
 
   function openHoops() {
+    document.getElementById("contactBtn").style.display = "none";
     document.getElementById("hoops-overlay").classList.add("active");
     document.getElementById("shotHelperBtn").style.display = "none";
     document.getElementById("shotHelperPanel").classList.remove("open");
@@ -799,6 +963,7 @@ window.addEventListener("DOMContentLoaded",function(){
     initHoops();
   }
   function closeHoops() {
+    document.getElementById("contactBtn").style.display = "block";
     document.getElementById("hoops-overlay").classList.remove("active");
     hoopsActive = false;
     if (hoopsAnim) cancelAnimationFrame(hoopsAnim);
@@ -1205,6 +1370,13 @@ window.addEventListener("DOMContentLoaded",function(){
     ballMoveIntent = dir;
     setTimeout(function(){ ballMoveIntent = 0; }, 50);
   }
+
+  function openContact() {
+    document.getElementById("contact-overlay").classList.add("active");
+  }
+  function closeContact() {
+    document.getElementById("contact-overlay").classList.remove("active");
+  }
   </script>
   <!-- COLOR MAKER OVERLAY -->
   <div id="cm-overlay" class="overlay">
@@ -1342,5 +1514,45 @@ window.addEventListener("DOMContentLoaded",function(){
       </div>
     </div>
   </div>
+
+  <!-- CONTACT PAGE -->
+  <div id="contact-overlay">
+    <button class="contact-back" onclick="closeContact()">&#8592; back</button>
+
+    <div class="contact-card">
+
+      <div class="contact-icon">&#9993;</div>
+
+      <div class="contact-title">GET IN TOUCH</div>
+
+      <div class="contact-sub">
+        Found a bug? Got an idea for a new game? Want to say something nice (or mean)?
+        We want to hear it all.
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <a class="contact-email-box" href="mailto:dweebfish@gmail.com?subject=CreativityForAll.fun - Feedback">
+        <div class="contact-email-dot">&#9993;</div>
+        <div class="contact-email-text">
+          <div class="contact-email-label">Email us at</div>
+          <div class="contact-email-addr">dweebfish@gmail.com</div>
+        </div>
+      </a>
+
+      <div class="contact-tags">
+        <div class="contact-tag">&#128027; Bug report</div>
+        <div class="contact-tag">&#128161; Game idea</div>
+        <div class="contact-tag">&#127775; Feedback</div>
+        <div class="contact-tag">&#129321; Just saying hi</div>
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <div class="contact-footer">CREATIVITYFORALL.FUN &nbsp;&bull;&nbsp; BY DK &amp; SEEDY</div>
+
+    </div>
+  </div>
+
 </body>
 </html>
