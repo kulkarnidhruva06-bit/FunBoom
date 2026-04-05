@@ -464,6 +464,58 @@
       text-align: center;
       letter-spacing: 0.06em;
     }
+
+    /* ───── REACTION TIME ───── */
+    #reaction-overlay { font-family: 'DM Sans', sans-serif; }
+    #rxScreen {
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 20px; cursor: pointer; user-select: none; transition: background 0.1s;
+    }
+    .rx-circle {
+      width: 160px; height: 160px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 4px; transition: transform 0.1s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+    .rx-circle:active { transform: scale(0.94); }
+    .rx-label { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.1em; }
+    .rx-sub { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
+    .rx-result-num { font-family: 'Bebas Neue', sans-serif; font-size: 80px; letter-spacing: 0.04em; line-height: 1; }
+    .rx-result-unit { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.5; margin-top: -8px; }
+    .rx-result-grade { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.1em; margin-top: 6px; }
+    .rx-history { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; max-width: 320px; }
+    .rx-hist-pill { font-size: 12px; padding: 4px 12px; border-radius: 99px; font-weight: 500; }
+    .rx-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(255,255,255,0.35); background: transparent; border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; padding: 8px 22px; cursor: pointer; letter-spacing: 0.08em; transition: color 0.2s, border-color 0.2s; }
+    .rx-btn:hover { color: #fff; border-color: rgba(255,255,255,0.45); }
+
+    /* ───── ODD ONE OUT ───── */
+    #odd-overlay { font-family: 'DM Sans', sans-serif; background: #111; }
+    .odd-back-bar { width: 100%; padding: 14px 22px; display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.3); flex-shrink: 0; }
+    .odd-hud { margin-left: auto; display: flex; gap: 20px; align-items: center; }
+    .odd-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: #fff; letter-spacing: 0.05em; line-height: 1; text-align: center; }
+    .odd-stat-label { font-size: 9px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; text-align: center; }
+    .odd-timer-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+    .odd-timer-fill { height: 100%; background: linear-gradient(90deg, #22cc66, #ffdd00); transition: width 0.1s linear; }
+    .odd-game-area { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 16px; }
+    .odd-prompt { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); text-align: center; }
+    .odd-grid { display: grid; gap: 8px; }
+    .odd-cell {
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 26px; cursor: pointer; transition: transform 0.12s, box-shadow 0.12s;
+      user-select: none; flex-shrink: 0;
+    }
+    .odd-cell:hover { transform: scale(1.08); }
+    .odd-cell.correct { animation: odd-pop 0.4s ease; box-shadow: 0 0 24px rgba(100,255,150,0.7); }
+    .odd-cell.wrong { animation: odd-shake 0.3s ease; }
+    @keyframes odd-pop { 0%{transform:scale(1)} 50%{transform:scale(1.3)} 100%{transform:scale(1)} }
+    @keyframes odd-shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+    .odd-end { display: none; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+    .odd-end.show { display: flex; }
+    .odd-end-score { font-family: 'Bebas Neue', sans-serif; font-size: 72px; color: #fff; letter-spacing: 0.05em; line-height: 1; }
+    .odd-end-label { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.15em; text-transform: uppercase; }
+    .odd-end-msg { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 260px; line-height: 1.65; }
+    .odd-restart { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #111; background: #f5f0e8; border: none; border-radius: 999px; padding: 10px 28px; cursor: pointer; font-weight: 500; letter-spacing: 0.06em; transition: background 0.15s; }
+    .odd-restart:hover { background: #fff; }
   </style>
 </head>
 <body>
@@ -528,6 +580,45 @@
         <div class="card-label">
           <div class="card-name">HOOP<br>SHOT</div>
           <div class="card-tag">game</div>
+        </div>
+      </div>
+
+      
+
+      <!-- Reaction Time card -->
+      <div class="card" onclick="openReaction()">
+        <div style="position:absolute;inset:0;background:#0d0d0d;"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#00ff88,#00aa55);box-shadow:0 0 30px rgba(0,255,136,0.6);display:flex;align-items:center;justify-content:center;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:#fff;letter-spacing:0.05em;">CLICK!</div>
+          </div>
+        </div>
+        <div class="card-label">
+          <div class="card-name">REACTION<br>TIME</div>
+          <div class="card-tag">reflex</div>
+        </div>
+      </div>
+
+      <!-- Odd One Out card -->
+      <div class="card" onclick="openOddOne()">
+        <div style="position:absolute;inset:0;background:#111;"></div>
+        <div style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:4px;padding:16px;">
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#444;display:flex;align-items:center;justify-content:center;font-size:18px;">🌙</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+          <div style="border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:18px;">⭐</div>
+        </div>
+        <div class="card-label">
+          <div class="card-name">ODD<br>ONE OUT</div>
+          <div class="card-tag">puzzle</div>
         </div>
       </div>
     </div>
@@ -1038,19 +1129,22 @@ window.addEventListener("DOMContentLoaded",function(){
       var lx = hoopX - rimW/2;
       var rx = hoopX + rimW/2;
 
-      // Backboard
+      // OG backboard (glass style) — hittable
+      var bbX = hoopX + rimW/2 - 4;
+      var bbY = hoopY - 38;
+      var bbW = 52;
+      var bbH = 62;
       ctx.fillStyle = "rgba(255,255,255,0.15)";
       ctx.strokeStyle = "rgba(255,255,255,0.5)";
       ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.roundRect(hoopX + rimW/2 - 4, hoopY - 38, 52, 62, 4);
+      ctx.roundRect(bbX, bbY, bbW, bbH, 4);
       ctx.fill();
       ctx.stroke();
-
-      // Backboard square
+      // Backboard target square
       ctx.strokeStyle = "rgba(255,100,50,0.8)";
       ctx.lineWidth = 2;
-      ctx.strokeRect(hoopX + rimW/2 + 8, hoopY - 22, 28, 22);
+      ctx.strokeRect(bbX + 14, hoopY - 22, 28, 22);
 
       // Support pole
       ctx.strokeStyle = "#888";
@@ -1335,6 +1429,32 @@ window.addEventListener("DOMContentLoaded",function(){
         // Bounce off walls
         if (ballX - ballR < 0) { ballX = ballR; ballVX = Math.abs(ballVX)*0.6; }
         if (ballX + ballR > W) { ballX = W-ballR; ballVX = -Math.abs(ballVX)*0.6; }
+        // Bounce off backboard (OG glass style)
+        var bbX = hoopX + rimW/2 - 4;
+        var bbY = hoopY - 38;
+        var bbW = 52;
+        var bbH = 62;
+        if (ballX + ballR > bbX && ballX - ballR < bbX + bbW &&
+            ballY + ballR > bbY && ballY - ballR < bbY + bbH) {
+          // Hit left face of backboard
+          if (ballVX > 0 && ballX < bbX + bbW/2) {
+            ballX = bbX - ballR;
+            ballVX = -Math.abs(ballVX) * 0.6;
+          }
+          // Hit right face
+          else if (ballVX < 0 && ballX > bbX + bbW/2) {
+            ballX = bbX + bbW + ballR;
+            ballVX = Math.abs(ballVX) * 0.6;
+          }
+          // Hit top or bottom
+          else if (ballVY > 0 && ballY < bbY + bbH/2) {
+            ballY = bbY - ballR;
+            ballVY = -Math.abs(ballVY) * 0.55;
+          } else {
+            ballY = bbY + bbH + ballR;
+            ballVY = Math.abs(ballVY) * 0.5;
+          }
+        }
         // Bounce off rim
         var lrim = {x:hoopX-rimW/2, y:hoopY+rimH/2};
         var rrim = {x:hoopX+rimW/2, y:hoopY+rimH/2};
@@ -1377,6 +1497,226 @@ window.addEventListener("DOMContentLoaded",function(){
   function closeContact() {
     document.getElementById("contact-overlay").classList.remove("active");
   }
+
+  // ========== REACTION TIME ==========
+  var rxState = 'idle'; // idle, waiting, ready, result
+  var rxStart = 0, rxTimeout = null, rxTimes = [];
+  var rxColors = {
+    idle:    { bg:'#0d0d0d', circle:'#1a1a1a', border:'rgba(255,255,255,0.1)', label:'TAP WHEN', sub:'GREEN', text:'rgba(255,255,255,0.5)' },
+    waiting: { bg:'#1a0000', circle:'#2a0000', border:'rgba(255,50,50,0.3)',   label:'WAIT...',  sub:'',      text:'rgba(255,80,80,0.7)' },
+    ready:   { bg:'#001a0a', circle:'#00cc55', border:'rgba(0,255,136,0.6)',   label:'NOW!',     sub:'CLICK!', text:'#00ff88' },
+    early:   { bg:'#1a0a00', circle:'#cc4400', border:'rgba(255,100,0,0.5)',   label:'TOO',      sub:'EARLY!', text:'#ff6600' },
+  };
+
+  function openReaction() {
+    document.getElementById('reaction-overlay').classList.add('active');
+    document.getElementById('contactBtn').style.display = 'none';
+    rxState = 'idle'; rxTimes = [];
+    rxRender();
+  }
+  function closeReaction() {
+    if (rxTimeout) clearTimeout(rxTimeout);
+    document.getElementById('reaction-overlay').classList.remove('active');
+    document.getElementById('contactBtn').style.display = 'block';
+  }
+
+  function rxRender() {
+    var screen = document.getElementById('rxScreen');
+    var c = rxColors[rxState] || rxColors.idle;
+    screen.style.background = c.bg;
+    if (rxState === 'result') {
+      var avg = Math.round(rxTimes.reduce(function(a,b){return a+b;},0)/rxTimes.length);
+      var grade, gradeColor;
+      if(avg<150){grade="SUPERHUMAN";gradeColor="#00ff88";}
+      else if(avg<200){grade="PRO GAMER";gradeColor="#44ddff";}
+      else if(avg<250){grade="FAST";gradeColor="#aaffaa";}
+      else if(avg<300){grade="AVERAGE";gradeColor="#ffdd44";}
+      else if(avg<400){grade="SLOW";gradeColor="#ffaa44";}
+      else{grade="SLEEPY?";gradeColor="#ff6666";}
+      var hist = rxTimes.map(function(t,i){
+        var col = t<200?"#00cc66":t<300?"#ffdd44":"#ff6655";
+        return '<div class="rx-hist-pill" style="background:'+col+'22;color:'+col+';">'+t+'ms</div>';
+      }).join('');
+      screen.innerHTML =
+        '<div style="display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;">' +
+        '<div class="rx-result-num" style="color:'+gradeColor+'">'+avg+'</div>' +
+        '<div class="rx-result-unit">milliseconds avg</div>' +
+        '<div class="rx-result-grade" style="color:'+gradeColor+'">'+grade+'</div>' +
+        '</div>' +
+        '<div class="rx-history">'+hist+'</div>' +
+        '<button class="rx-btn" onclick="rxPlayAgain()">Play again</button>' +
+        '<button class="rx-btn" onclick="closeReaction()" style="opacity:0.5;">Back</button>';
+      return;
+    }
+    screen.innerHTML =
+      '<div class="rx-circle" style="background:'+c.circle+';border:3px solid '+c.border+';box-shadow:0 0 40px '+c.border+';">' +
+      '<div class="rx-label" style="color:'+c.text+'">'+c.label+'</div>' +
+      '<div class="rx-sub" style="color:'+c.text+'">'+c.sub+'</div>' +
+      '</div>' +
+      (rxTimes.length>0?'<div style="font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.1em;">Round '+(rxTimes.length+1)+' of 5</div>':'<div style="font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">Click anywhere to start</div>');
+  }
+
+  function rxClick() {
+    if (rxState === 'idle') {
+      rxState = 'waiting';
+      rxRender();
+      var delay = 1500 + Math.random()*3500;
+      rxTimeout = setTimeout(function(){ rxState='ready'; rxStart=Date.now(); rxRender(); }, delay);
+    } else if (rxState === 'waiting') {
+      clearTimeout(rxTimeout);
+      rxState = 'early';
+      rxRender();
+      rxTimeout = setTimeout(function(){ rxState='idle'; rxRender(); }, 1200);
+    } else if (rxState === 'ready') {
+      var t = Date.now() - rxStart;
+      rxTimes.push(t);
+      if (rxTimes.length >= 5) { rxState='result'; rxRender(); }
+      else { rxState='idle'; rxRender(); }
+    } else if (rxState === 'early') {
+      // ignore
+    } else if (rxState === 'result') {
+      // ignore clicks on result (buttons handle it)
+    }
+  }
+  function rxPlayAgain() { rxTimes=[]; rxState='idle'; rxRender(); }
+
+  // ========== ODD ONE OUT ==========
+  var oddScore=0, oddLevel=1, oddTimer=null, oddTimeLeft=0, oddTotalTime=0;
+  var oddSets = [
+    {items:["🍎","🍊","🍋","🍇","🍓","🍑","🍒","🥭","🍉","🍈","🍌","🫐"], odd:"🥦"},
+    {items:["🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐨","🐯","🦁","🐮"], odd:"🦅"},
+    {items:["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🚚","🚛"], odd:"✈️"},
+    {items:["⭐","🌟","💫","✨","🌠","🌌","☀️","🌙","🌛","🌜","🌝","🌞"], odd:"🌊"},
+    {items:["🎸","🎹","🎺","🎻","🥁","🪘","🪗","🎷","🪕","🎵","🎶","🎼"], odd:"🖼️"},
+    {items:["🍕","🍔","🌮","🌯","🥙","🧆","🥚","🍳","🧇","🥓","🥞","🧈"], odd:"🍰"},
+    {items:["🔴","🟠","🟡","🟢","🔵","🟣","⚫","⚪","🟤","🔶","🔷","🔸"], odd:"🔺"},
+    {items:["🏀","⚽","🏈","⚾","🎾","🏐","🏉","🥏","🎱","🏓","🏸","🥊"], odd:"🎲"},
+  ];
+
+  function openOddOne() {
+    document.getElementById('odd-overlay').classList.add('active');
+    document.getElementById('contactBtn').style.display = 'none';
+    startOddOne();
+  }
+  function closeOddOne() {
+    clearInterval(oddTimer);
+    document.getElementById('odd-overlay').classList.remove('active');
+    document.getElementById('contactBtn').style.display = 'block';
+  }
+  function startOddOne() {
+    oddScore=0; oddLevel=1;
+    document.getElementById('oddScore').textContent='0';
+    document.getElementById('oddLevel').textContent='1';
+    document.getElementById('oddEnd').classList.remove('show');
+    document.getElementById('oddGameArea').style.display='flex';
+    nextOddRound();
+  }
+  // Difficulty tiers: similar-looking items make it much harder
+  var oddHardSets = [
+    // Level 5+: same color fruits, very similar
+    {items:["🍎","🍒","🍓","🌹","❤️","🔴","🫶","🎈","🍉","🥊","🧧","🚒"], odd:"🟠"},
+    // Sports balls look alike
+    {items:["⚽","🏀","⚾","🎾","🏐","🏉","🥎","🎱","🏓","🏸","🥅","🏒"], odd:"🎯"},
+    // Yellow things
+    {items:["🌟","⭐","💛","🌻","🍋","🌼","🔆","🟡","🌕","🏆","🎗️","⚡"], odd:"🍊"},
+    // Animal faces look similar
+    {items:["🐱","🐯","🦁","🐆","🐅","🐈","🦊","🦝","🦡","🐺","🦨","🦦"], odd:"🐧"},
+    // Blue things
+    {items:["💙","🔵","🌊","🫐","🐋","🌀","💎","🧊","🥶","🫧","🪣","🔷"], odd:"🟣"},
+    // Night sky
+    {items:["🌙","⭐","🌟","💫","✨","🌠","🌃","🌌","🔭","🪐","🌑","🌒"], odd:"☀️"},
+    // Green things super similar
+    {items:["🍀","🌿","🍃","🌱","🌾","🎋","🎍","🌲","🌳","🌴","🪴","🍵"], odd:"🍏"},
+    // Faces
+    {items:["😀","😃","😄","😁","😆","😅","🤣","😂","🙂","🙃","😉","😊"], odd:"😡"},
+  ];
+
+  var oddUltraHardSets = [
+    // Nearly identical emoji - just different enough
+    {items:["🌑","🌒","🌓","🌔","🌕","🌖","🌗","🌘","🌑","🌒","🌓","🌔","🌕","🌖","🌗","🌘"], odd:"⭐"},
+    {items:["😀","😃","😄","😁","😆","😅","😀","😃","😄","😁","😆","😅","😀","😃","😄","😁"], odd:"😐"},
+    {items:["🔴","🔵","🟠","🟡","🟢","🟣","🔴","🔵","🟠","🟡","🟢","🟣","🔴","🔵","🟠","🟡"], odd:"⬛"},
+  ];
+
+  function nextOddRound() {
+    clearInterval(oddTimer);
+    var set;
+    if (oddLevel >= 12) {
+      set = oddUltraHardSets[Math.floor(Math.random()*oddUltraHardSets.length)];
+    } else if (oddLevel >= 6) {
+      set = Math.random()<0.7 ? oddHardSets[Math.floor(Math.random()*oddHardSets.length)] : oddSets[Math.floor(Math.random()*oddSets.length)];
+    } else {
+      set = oddSets[Math.floor(Math.random()*oddSets.length)];
+    }
+    var size = Math.min(3+Math.floor(oddLevel/1.5), 7); // 3..7 cols, grows faster
+    var total = size*size;
+    var pool = set.items.slice();
+    // shuffle pool
+    for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
+    // At higher levels, pick TWO similar-looking items as main to add extra confusion
+    var main = pool[0];
+    var useDual = oddLevel >= 8 && pool.length > 2;
+    var main2 = useDual ? pool[1] : null;
+    var cells = [];
+    for(var i=0;i<total-1;i++) {
+      if (useDual && i>0 && i%3===0) cells.push(main2);
+      else cells.push(main);
+    }
+    var oddPos = Math.floor(Math.random()*total);
+    cells.splice(oddPos,0,set.odd);
+
+    var cellSize = Math.min(54, Math.floor(280/size));
+    var grid = document.getElementById('oddGrid');
+    grid.style.gridTemplateColumns='repeat('+size+','+cellSize+'px)';
+    grid.innerHTML='';
+    cells.forEach(function(em,i){
+      var cell=document.createElement('div');
+      cell.className='odd-cell';
+      cell.style.width=cellSize+'px'; cell.style.height=cellSize+'px';
+      cell.style.background='rgba(255,255,255,0.04)';
+      cell.style.fontSize=Math.floor(cellSize*0.45)+'px';
+      cell.textContent=em;
+      (function(isOdd,el){
+        el.onclick=function(){
+          if(isOdd){
+            el.classList.add('correct');
+            oddScore+=Math.max(1,Math.ceil(oddTimeLeft/1000)*oddLevel);
+            document.getElementById('oddScore').textContent=oddScore;
+            oddLevel++;
+            document.getElementById('oddLevel').textContent=oddLevel;
+            setTimeout(nextOddRound,400);
+          } else {
+            el.classList.add('wrong');
+            setTimeout(function(){ el.classList.remove('wrong'); },300);
+            oddTimeLeft=Math.max(0,oddTimeLeft-2000);
+          }
+        };
+      })(i===oddPos,cell);
+      grid.appendChild(cell);
+    });
+
+    document.getElementById('oddPrompt').textContent="Find the odd one out! (Level "+oddLevel+")";
+    oddTotalTime=Math.max(3000,16000-oddLevel*1000); // gets brutal fast
+    oddTimeLeft=oddTotalTime;
+    document.getElementById('oddTimerFill').style.transition='none';
+    document.getElementById('oddTimerFill').style.width='100%';
+    setTimeout(function(){
+      document.getElementById('oddTimerFill').style.transition='width '+oddTotalTime+'ms linear';
+      document.getElementById('oddTimerFill').style.width='0%';
+    },50);
+    oddTimer=setInterval(function(){
+      oddTimeLeft-=100;
+      if(oddTimeLeft<=0){ clearInterval(oddTimer); showOddEnd(); }
+    },100);
+  }
+  function showOddEnd() {
+    document.getElementById('oddGameArea').style.display='none';
+    document.getElementById('oddEnd').classList.add('show');
+    document.getElementById('oddEndScore').textContent=oddScore;
+    var msgs=["Keep practicing! Your eyes will get sharper.","Not bad! You spotted a few tricky ones.","Nice work! You've got a good eye.","Impressive! You flew through those.","Insane! Are you even human? Your reaction is wild."];
+    document.getElementById('oddEndMsg').textContent=msgs[Math.min(Math.floor(oddScore/5),msgs.length-1)];
+  }
+
   </script>
   <!-- COLOR MAKER OVERLAY -->
   <div id="cm-overlay" class="overlay">
@@ -1546,3 +1886,49 @@ window.addEventListener("DOMContentLoaded",function(){
         <div class="contact-tag">&#127775; Feedback</div>
         <div class="contact-tag">&#129321; Just saying hi</div>
       </div>
+
+          <div class="contact-divider"></div>
+
+      <div class="contact-footer">CREATIVITYFORALL.FUN &nbsp;&bull;&nbsp; BY DK &amp; SEEDY</div>
+
+    </div>
+  </div>
+
+
+
+  <!-- REACTION TIME OVERLAY -->
+  <div id="reaction-overlay" class="overlay">
+    <div style="width:100%;padding:14px 22px;display:flex;align-items:center;gap:12px;background:rgba(0,0,0,0.3);flex-shrink:0;">
+      <button class="back-btn" onclick="closeReaction()">&#8592; back</button>
+      <span class="back-site" style="color:rgba(255,255,255,0.3);">CREATIVITYFORALL.FUN</span>
+    </div>
+    <div id="rxScreen" onclick="rxClick()">
+      <!-- content injected by JS -->
+    </div>
+  </div>
+
+  <!-- ODD ONE OUT OVERLAY -->
+  <div id="odd-overlay" class="overlay">
+    <div class="odd-back-bar">
+      <button class="back-btn" onclick="closeOddOne()">&#8592; back</button>
+      <span class="back-site" style="color:rgba(255,255,255,0.3);">CREATIVITYFORALL.FUN</span>
+      <div class="odd-hud">
+        <div><div class="odd-stat-num" id="oddScore">0</div><div class="odd-stat-label">Score</div></div>
+        <div><div class="odd-stat-num" id="oddLevel">1</div><div class="odd-stat-label">Level</div></div>
+      </div>
+    </div>
+    <div class="odd-timer-bar"><div class="odd-timer-fill" id="oddTimerFill" style="width:100%"></div></div>
+    <div class="odd-game-area" id="oddGameArea">
+      <div class="odd-prompt" id="oddPrompt">Find the odd one out!</div>
+      <div class="odd-grid" id="oddGrid"></div>
+    </div>
+    <div class="odd-end" id="oddEnd">
+      <div class="odd-end-label">Final Score</div>
+      <div class="odd-end-score" id="oddEndScore">0</div>
+      <div class="odd-end-msg" id="oddEndMsg"></div>
+      <button class="odd-restart" onclick="startOddOne()">Play Again</button>
+    </div>
+  </div>
+
+</body>
+</html>
