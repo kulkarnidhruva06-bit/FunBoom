@@ -516,6 +516,175 @@
     .odd-end-msg { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 260px; line-height: 1.65; }
     .odd-restart { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #111; background: #f5f0e8; border: none; border-radius: 999px; padding: 10px 28px; cursor: pointer; font-weight: 500; letter-spacing: 0.06em; transition: background 0.15s; }
     .odd-restart:hover { background: #fff; }
+
+    /* ───── GUESS THE YEAR ───── */
+    #gy-overlay { background: #0d1117; font-family: 'DM Sans', sans-serif; }
+    .gy-back-bar { width:100%; padding:14px 22px; display:flex; align-items:center; gap:12px; background:rgba(0,0,0,0.4); flex-shrink:0; }
+    .gy-hud { margin-left:auto; display:flex; gap:20px; align-items:center; }
+    .gy-stat { text-align:center; }
+    .gy-stat-num { font-family:'Bebas Neue',sans-serif; font-size:26px; color:#fff; letter-spacing:0.05em; line-height:1; }
+    .gy-stat-label { font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.12em; text-transform:uppercase; }
+
+    .gy-game-area { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; padding:24px; overflow-y:auto; }
+
+    .gy-round { font-size:11px; color:rgba(255,255,255,0.25); letter-spacing:0.15em; text-transform:uppercase; }
+
+    .gy-event-card {
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px;
+      padding:28px 32px;
+      max-width:400px;
+      width:100%;
+      text-align:center;
+    }
+    .gy-event-emoji { font-size:40px; margin-bottom:12px; display:block; }
+    .gy-event-text {
+      font-size:16px; color:rgba(255,255,255,0.85); line-height:1.65;
+      font-weight:400;
+    }
+    .gy-event-category { font-size:10px; color:rgba(255,255,255,0.25); letter-spacing:0.15em; text-transform:uppercase; margin-top:10px; }
+
+    .gy-slider-wrap { width:100%; max-width:400px; display:flex; flex-direction:column; gap:10px; }
+    .gy-year-display {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:64px; color:#fff; letter-spacing:0.08em;
+      text-align:center; line-height:1;
+    }
+    .gy-slider-labels { display:flex; justify-content:space-between; font-size:11px; color:rgba(255,255,255,0.25); letter-spacing:0.08em; padding:0 2px; }
+    #gySlider {
+      -webkit-appearance:none; appearance:none;
+      width:100%; height:6px; border-radius:99px;
+      background:rgba(255,255,255,0.12);
+      outline:none; cursor:pointer;
+    }
+    #gySlider::-webkit-slider-thumb {
+      -webkit-appearance:none; width:26px; height:26px;
+      border-radius:50%; background:#fff;
+      box-shadow:0 0 12px rgba(255,255,255,0.4);
+      cursor:pointer;
+    }
+    #gySlider::-moz-range-thumb { width:26px;height:26px;border-radius:50%;background:#fff;border:none;box-shadow:0 0 12px rgba(255,255,255,0.4);cursor:pointer; }
+
+    .gy-lock-btn {
+      font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.1em;
+      color:#0d1117; background:#fff;
+      border:none; border-radius:999px; padding:13px 44px;
+      cursor:pointer; transition:background 0.15s, transform 0.1s;
+      box-shadow:0 0 24px rgba(255,255,255,0.2);
+      width:100%; max-width:400px;
+    }
+    .gy-lock-btn:hover { background:#e8e8e8; transform:scale(1.02); }
+
+    /* result state */
+    .gy-result-wrap { width:100%; max-width:400px; display:flex; flex-direction:column; gap:14px; }
+    .gy-result-bar {
+      height:8px; border-radius:99px;
+      background:rgba(255,255,255,0.08);
+      position:relative; overflow:hidden;
+    }
+    .gy-result-fill { height:100%; border-radius:99px; transition:width 0.8s cubic-bezier(0.4,0,0.2,1); width:0%; }
+    .gy-result-labels { display:flex; justify-content:space-between; align-items:center; }
+    .gy-your-guess { font-size:13px; color:rgba(255,255,255,0.5); }
+    .gy-actual-year { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.08em; }
+    .gy-score-earned { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:0.05em; text-align:center; line-height:1; }
+    .gy-score-label { font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:0.15em; text-transform:uppercase; text-align:center; }
+    .gy-verdict { font-size:20px; text-align:center; font-family:'Bebas Neue',sans-serif; letter-spacing:0.1em; }
+    .gy-next-btn { font-family:'DM Sans',sans-serif; font-size:12px; color:rgba(255,255,255,0.4); background:transparent; border:1px solid rgba(255,255,255,0.15); border-radius:999px; padding:10px 28px; cursor:pointer; letter-spacing:0.08em; transition:color 0.2s, border-color 0.2s; align-self:center; }
+    .gy-next-btn:hover { color:#fff; border-color:rgba(255,255,255,0.45); }
+
+    /* end screen */
+    .gy-end { display:none; flex-direction:column; align-items:center; gap:16px; text-align:center; }
+    .gy-end.show { display:flex; }
+    .gy-end-score { font-family:'Bebas Neue',sans-serif; font-size:80px; color:#fff; letter-spacing:0.05em; line-height:1; }
+    .gy-end-label { font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:0.15em; text-transform:uppercase; }
+    .gy-end-msg { font-size:14px; color:rgba(255,255,255,0.5); max-width:280px; line-height:1.7; }
+    .gy-replay { font-family:'DM Sans',sans-serif; font-size:13px; color:#0d1117; background:#f5f0e8; border:none; border-radius:999px; padding:11px 30px; cursor:pointer; font-weight:500; letter-spacing:0.06em; transition:background 0.15s; }
+    .gy-replay:hover { background:#fff; }
+
+    /* ───── TYPE IT! ───── */
+    #typeit-overlay { background: #0a0a0a; font-family: 'DM Sans', sans-serif; }
+    .ti-back-bar { width:100%; padding:14px 22px; display:flex; align-items:center; gap:12px; background:rgba(0,0,0,0.5); flex-shrink:0; }
+    .ti-hud { margin-left:auto; display:flex; gap:20px; }
+    .ti-stat { text-align:center; }
+    .ti-stat-num { font-family:'Bebas Neue',sans-serif; font-size:26px; color:#fff; letter-spacing:0.05em; line-height:1; }
+    .ti-stat-label { font-size:9px; color:rgba(255,255,255,0.3); letter-spacing:0.12em; text-transform:uppercase; }
+
+    .ti-game-area { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px; padding:28px 24px; }
+
+    .ti-round-label { font-size:11px; color:rgba(255,255,255,0.2); letter-spacing:0.15em; text-transform:uppercase; }
+
+    .ti-text-display {
+      width:100%; max-width:540px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:14px;
+      padding:22px 24px;
+      font-size:20px;
+      line-height:1.8;
+      letter-spacing:0.03em;
+      word-break:break-word;
+    }
+    .ti-char { color:rgba(255,255,255,0.25); transition:color 0.05s; }
+    .ti-char.correct { color:#00ff88; }
+    .ti-char.wrong { color:#ff4444; background:rgba(255,68,68,0.15); border-radius:2px; }
+    .ti-char.cursor {
+      border-left:2px solid #fff;
+      animation:ti-blink 1s step-end infinite;
+    }
+    @keyframes ti-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    #tiInput {
+      width:100%; max-width:540px;
+      background:rgba(255,255,255,0.05);
+      border:1.5px solid rgba(255,255,255,0.1);
+      border-radius:10px;
+      padding:14px 18px;
+      font-size:16px;
+      color:#fff;
+      font-family:'DM Sans',sans-serif;
+      outline:none;
+      caret-color:#00ff88;
+      transition:border-color 0.15s;
+    }
+    #tiInput:focus { border-color:rgba(0,255,136,0.4); }
+
+    .ti-progress-wrap { width:100%;max-width:540px;height:4px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden; }
+    .ti-progress-fill { height:100%;background:linear-gradient(90deg,#00ff88,#00ccff);border-radius:99px;transition:width 0.1s; width:0%; }
+
+    .ti-timer-ring {
+      width:70px;height:70px;border-radius:50%;
+      background:conic-gradient(#00ff88 0deg, rgba(255,255,255,0.08) 0deg);
+      display:flex;align-items:center;justify-content:center;
+      transition:background 0.1s;
+      flex-shrink:0;
+    }
+    .ti-timer-inner {
+      width:54px;height:54px;border-radius:50%;background:#0a0a0a;
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;letter-spacing:0.05em;
+    }
+
+    .ti-start-btn {
+      font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.1em;
+      color:#0a0a0a;background:#00ff88;border:none;border-radius:999px;
+      padding:13px 44px;cursor:pointer;
+      box-shadow:0 0 28px rgba(0,255,136,0.35);
+      transition:background 0.15s,transform 0.1s;
+    }
+    .ti-start-btn:hover { background:#00dd77;transform:scale(1.04); }
+
+    /* results */
+    .ti-result-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:380px; }
+    .ti-result-card {
+      background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+      border-radius:12px;padding:16px;text-align:center;
+    }
+    .ti-result-num { font-family:'Bebas Neue',sans-serif;font-size:40px;color:#fff;letter-spacing:0.05em;line-height:1; }
+    .ti-result-unit { font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;margin-top:2px; }
+    .ti-wpm-grade { font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.08em;text-align:center; }
+    .ti-again-btn { font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);background:transparent;border:1px solid rgba(255,255,255,0.15);border-radius:999px;padding:9px 24px;cursor:pointer;letter-spacing:0.08em;transition:color 0.2s,border-color 0.2s; }
+    .ti-again-btn:hover { color:#fff;border-color:rgba(255,255,255,0.45); }
   </style>
 </head>
 <body>
@@ -619,6 +788,28 @@
         <div class="card-label">
           <div class="card-name">ODD<br>ONE OUT</div>
           <div class="card-tag">puzzle</div>
+        </div>
+      <!-- Guess The Year card -->
+      <div class="card" onclick="openGuessYear()">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;">
+          <div style="font-size:36px;">📅</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(255,255,255,0.15);letter-spacing:0.1em;">1 9 _ _</div>
+        </div>
+        <div class="card-label">
+          <div class="card-name">GUESS<br>THE YEAR</div>
+          <div class="card-tag">history</div>
+        </div>
+      <!-- Type It! card -->
+      <div class="card" onclick="openTypeIt()">
+        <div style="position:absolute;inset:0;background:#0a0a0a;"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:18px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:0.12em;color:rgba(255,255,255,0.25);text-align:center;line-height:1.6;">The quick brown fox jumps over the lazy dog</div>
+          <div style="width:60%;height:2px;background:linear-gradient(90deg,#00ff88,transparent);border-radius:2px;margin-top:4px;"></div>
+        </div>
+        <div class="card-label">
+          <div class="card-name">TYPE<br>IT!</div>
+          <div class="card-tag">speed</div>
         </div>
       </div>
     </div>
@@ -1717,6 +1908,295 @@ window.addEventListener("DOMContentLoaded",function(){
     document.getElementById('oddEndMsg').textContent=msgs[Math.min(Math.floor(oddScore/5),msgs.length-1)];
   }
 
+
+  // ========== GUESS THE YEAR ==========
+  var gyEvents = [
+    {emoji:"🚀",text:"Neil Armstrong becomes the first human to walk on the Moon",year:1969,category:"Space"},
+    {emoji:"🖥️",text:"Apple releases the first iPhone",year:2007,category:"Technology"},
+    {emoji:"🧬",text:"Scientists announce the completion of the Human Genome Project",year:2003,category:"Science"},
+    {emoji:"🌐",text:"Tim Berners-Lee invents the World Wide Web",year:1989,category:"Technology"},
+    {emoji:"🎬",text:"The first ever motion picture is shown to a paying audience by the Lumière brothers",year:1895,category:"Entertainment"},
+    {emoji:"✈️",text:"The Wright Brothers complete the first powered airplane flight at Kitty Hawk",year:1903,category:"Transport"},
+    {emoji:"💡",text:"Thomas Edison patents his design for the light bulb",year:1879,category:"Inventions"},
+    {emoji:"🧪",text:"Alexander Fleming discovers penicillin by accident in his lab",year:1928,category:"Science"},
+    {emoji:"📱",text:"Mark Zuckerberg launches Facebook from his Harvard dorm room",year:2004,category:"Technology"},
+    {emoji:"🏆",text:"The first modern Olympic Games are held in Athens, Greece",year:1896,category:"Sports"},
+    {emoji:"📻",text:"Guglielmo Marconi sends the first transatlantic radio signal",year:1901,category:"Communication"},
+    {emoji:"🎸",text:"The Beatles release Sgt. Pepper's Lonely Hearts Club Band",year:1967,category:"Music"},
+    {emoji:"🌍",text:"The Berlin Wall falls, reuniting East and West Germany",year:1989,category:"History"},
+    {emoji:"🦕",text:"Mary Anning discovers the first complete plesiosaur fossil",year:1823,category:"Science"},
+    {emoji:"⚛️",text:"The United States drops the first atomic bomb on Hiroshima, Japan",year:1945,category:"History"},
+    {emoji:"🛸",text:"The Soviet Union launches Sputnik, the first artificial satellite",year:1957,category:"Space"},
+    {emoji:"🗽",text:"The Statue of Liberty is dedicated in New York Harbor",year:1886,category:"History"},
+    {emoji:"📷",text:"Louis Daguerre presents the daguerreotype, the first practical photography process",year:1839,category:"Inventions"},
+    {emoji:"🚂",text:"The first steam-powered passenger railway opens in England",year:1825,category:"Transport"},
+    {emoji:"🧲",text:"Michael Faraday demonstrates electromagnetic induction for the first time",year:1831,category:"Science"},
+    {emoji:"🏛️",text:"The United States Constitution is signed in Philadelphia",year:1787,category:"History"},
+    {emoji:"🎮",text:"Atari releases Pong, the first commercially successful video game",year:1972,category:"Gaming"},
+    {emoji:"🔭",text:"Galileo first turns his telescope toward the night sky",year:1609,category:"Science"},
+    {emoji:"🧲",text:"The first commercial microwave oven goes on sale to the public",year:1955,category:"Inventions"},
+    {emoji:"🌊",text:"The Titanic sinks on its maiden voyage in the North Atlantic",year:1912,category:"History"},
+    {emoji:"🎵",text:"Michael Jackson releases Thriller, the best-selling album of all time",year:1982,category:"Music"},
+    {emoji:"🦠",text:"Louis Pasteur develops the first vaccine for rabies",year:1885,category:"Science"},
+    {emoji:"🤖",text:"IBM's Deep Blue defeats chess world champion Garry Kasparov",year:1997,category:"Technology"},
+    {emoji:"📺",text:"The first color television broadcast takes place in the United States",year:1954,category:"Technology"},
+    {emoji:"🌱",text:"Charles Darwin publishes On the Origin of Species",year:1859,category:"Science"},
+  ];
+
+  var gyQueue=[], gyIndex=0, gyTotal=8, gyScore=0, gyGuess=1950, gyPhase='guess';
+
+  function openGuessYear() {
+    document.getElementById('gy-overlay').classList.add('active');
+    document.getElementById('contactBtn').style.display='none';
+    startGY();
+  }
+  function closeGY() {
+    document.getElementById('gy-overlay').classList.remove('active');
+    document.getElementById('contactBtn').style.display='block';
+  }
+  function startGY() {
+    gyScore=0; gyIndex=0; gyPhase='guess';
+    document.getElementById('gyScore').textContent='0';
+    document.getElementById('gyEnd').classList.remove('show');
+    document.getElementById('gyGameArea').style.display='flex';
+    gyQueue=shuffle(gyEvents.slice()).slice(0,gyTotal);
+    loadGYRound();
+  }
+  function loadGYRound() {
+    gyPhase='guess';
+    var ev=gyQueue[gyIndex];
+    document.getElementById('gyRoundLabel').textContent='ROUND '+(gyIndex+1)+' OF '+gyTotal;
+    document.getElementById('gyRoundNum').textContent=gyIndex+1;
+    document.getElementById('gyEmoji').textContent=ev.emoji;
+    document.getElementById('gyEventText').textContent=ev.text;
+    document.getElementById('gyCategory').textContent=ev.category;
+    gyGuess=1950;
+    var slider=document.getElementById('gySlider');
+    slider.value=1950;
+    document.getElementById('gyYearDisplay').textContent='1950';
+    document.getElementById('gyYearDisplay').style.color='#fff';
+    document.getElementById('gySliderWrap').style.display='flex';
+    document.getElementById('gyLockBtn').style.display='block';
+    document.getElementById('gyResultWrap').style.display='none';
+  }
+  function gySliderMove(val) {
+    gyGuess=parseInt(val);
+    document.getElementById('gyYearDisplay').textContent=gyGuess;
+  }
+  function gyLockIn() {
+    gyPhase='result';
+    var ev=gyQueue[gyIndex];
+    var diff=Math.abs(gyGuess-ev.year);
+    var pts, verdict, color;
+    if(diff===0)       { pts=1000; verdict="PERFECT!";    color="#00ff88"; }
+    else if(diff<=2)   { pts=900;  verdict="INCREDIBLE!"; color="#00ff88"; }
+    else if(diff<=5)   { pts=750;  verdict="AMAZING!";    color="#44ffaa"; }
+    else if(diff<=10)  { pts=550;  verdict="GREAT!";      color="#88ffcc"; }
+    else if(diff<=20)  { pts=350;  verdict="CLOSE!";      color="#ffdd44"; }
+    else if(diff<=50)  { pts=150;  verdict="NOT BAD";     color="#ffaa44"; }
+    else if(diff<=100) { pts=50;   verdict="WAY OFF";     color="#ff7744"; }
+    else               { pts=0;    verdict="MISS";        color="#ff4444"; }
+
+    gyScore+=pts;
+    document.getElementById('gyScore').textContent=gyScore;
+    document.getElementById('gyYearDisplay').style.color=color;
+    document.getElementById('gyYourGuess').textContent='Your guess: '+gyGuess;
+    document.getElementById('gyActualYear').textContent='Actual: '+ev.year;
+    document.getElementById('gyActualYear').style.color=color;
+    document.getElementById('gyVerdict').textContent=verdict;
+    document.getElementById('gyVerdict').style.color=color;
+    document.getElementById('gyScoreEarned').textContent='+'+pts;
+    document.getElementById('gyScoreEarned').style.color=color;
+
+    var accuracy=Math.max(0,100-diff);
+    document.getElementById('gyResultFill').style.background=color;
+    setTimeout(function(){ document.getElementById('gyResultFill').style.width=Math.min(100,accuracy*1.2)+'%'; },50);
+
+    document.getElementById('gySliderWrap').style.display='none';
+    document.getElementById('gyLockBtn').style.display='none';
+    document.getElementById('gyResultWrap').style.display='flex';
+
+    var nextBtn=document.getElementById('gyNextBtn');
+    nextBtn.textContent=gyIndex>=gyTotal-1?'See results ✓':'Next event →';
+  }
+  function gyNext() {
+    gyIndex++;
+    if(gyIndex>=gyTotal){ showGYEnd(); return; }
+    loadGYRound();
+  }
+  function showGYEnd() {
+    document.getElementById('gyGameArea').style.display='none';
+    document.getElementById('gyEnd').classList.add('show');
+    document.getElementById('gyEndScore').textContent=gyScore;
+    var max=gyTotal*1000;
+    var pct=gyScore/max;
+    var msgs=[
+      "History buff? Not so much. But hey, at least you showed up.",
+      "A few close calls in there! Your history knowledge is waking up.",
+      "Solid! You clearly paid some attention in school.",
+      "Impressive! You know your history better than most people.",
+      "Incredible! You basically have a history textbook in your brain.",
+      "PERFECT score! Are you a time traveler? How do you know all this?!"
+    ];
+    document.getElementById('gyEndMsg').textContent=msgs[Math.min(Math.floor(pct*5.99),5)];
+  }
+
+
+  // ========== TYPE IT! ==========
+  var tiPhrases = [
+    "The quick brown fox jumps over the lazy dog and lands softly on the other side",
+    "Pack my box with five dozen liquor jugs before the storm arrives tonight",
+    "How vexingly quick daft zebras jump over the sleeping polar bear",
+    "The five boxing wizards jump quickly and dodge every single blow",
+    "Sphinx of black quartz judge my vow as the sun sets over the mountain",
+    "Two driven jocks help fax my big quiz and celebrate with cold drinks",
+    "A mad boxer shot a quick gloved jab to the jaw of his dizzy opponent",
+    "We promptly judged antique ivory buckles for the next prize at the fair",
+    "Just keep swimming through the waves and you will find the shore eventually",
+    "The bright neon lights of the city reflected off the wet pavement below",
+    "Creativity is intelligence having fun and pushing the boundaries of possibility",
+    "Every great developer you know got there by solving problems they were unqualified to solve",
+    "The best way to predict the future is to invent it yourself from scratch",
+    "In the middle of every difficulty lies an opportunity waiting to be discovered",
+    "Life is what happens when you are busy making other plans for tomorrow",
+    "Not everything that is faced can be changed but nothing can be changed until it is faced",
+    "The only way to do great work is to love what you do every single day",
+  ];
+
+  var tiRunning=false, tiTimer=null, tiTimeLeft=30, tiTotalTime=30;
+  var tiText='', tiTyped=0, tiErrors=0, tiWordsTyped=0, tiStartTime=0;
+  var tiCurrentInput='';
+
+  function openTypeIt() {
+    document.getElementById('typeit-overlay').classList.add('active');
+    document.getElementById('contactBtn').style.display='none';
+    tiShowIdle();
+  }
+  function closeTI() {
+    clearInterval(tiTimer);
+    tiRunning=false;
+    document.getElementById('typeit-overlay').classList.remove('active');
+    document.getElementById('contactBtn').style.display='block';
+  }
+  function tiShowIdle() {
+    clearInterval(tiTimer); tiRunning=false;
+    document.getElementById('tiIdle').style.display='flex';
+    document.getElementById('tiPlaying').style.display='none';
+    document.getElementById('tiResult').style.display='none';
+    document.getElementById('tiWPM').textContent='0';
+    document.getElementById('tiAcc').textContent='100';
+  }
+
+  function startTI(secs) {
+    tiTotalTime=secs; tiTimeLeft=secs; tiTyped=0; tiErrors=0; tiWordsTyped=0;
+    tiCurrentInput='';
+    // Pick random phrase — keep extending it if too short
+    tiText = tiPhrases[Math.floor(Math.random()*tiPhrases.length)];
+    // Add more phrases if needed
+    while(tiText.split(' ').length < 30) {
+      tiText += ' ' + tiPhrases[Math.floor(Math.random()*tiPhrases.length)];
+    }
+
+    document.getElementById('tiIdle').style.display='none';
+    document.getElementById('tiResult').style.display='none';
+    document.getElementById('tiPlaying').style.display='flex';
+    document.getElementById('tiModeLabel').textContent=secs+'s MODE';
+    document.getElementById('tiProgressFill').style.width='0%';
+    tiRenderText();
+    document.getElementById('tiInput').value='';
+    document.getElementById('tiInput').focus();
+    tiRunning=true;
+    tiStartTime=Date.now();
+    tiUpdateTimer();
+    tiTimer=setInterval(tiTick,100);
+  }
+
+  function tiTick() {
+    tiTimeLeft-=0.1;
+    tiUpdateTimer();
+    // live WPM
+    var elapsed=(Date.now()-tiStartTime)/60000;
+    var wpm=elapsed>0?Math.round((tiTyped/5)/elapsed):0;
+    document.getElementById('tiWPM').textContent=wpm;
+    var acc=tiTyped>0?Math.round(((tiTyped-tiErrors)/tiTyped)*100):100;
+    document.getElementById('tiAcc').textContent=acc;
+    if(tiTimeLeft<=0) tiFinish();
+  }
+
+  function tiUpdateTimer() {
+    var t=Math.max(0,Math.ceil(tiTimeLeft));
+    document.getElementById('tiTimerNum').textContent=t;
+    var pct=(tiTimeLeft/tiTotalTime)*360;
+    var col=tiTimeLeft>10?'#00ff88':tiTimeLeft>5?'#ffdd44':'#ff4444';
+    document.getElementById('tiTimerRing').style.background=
+      'conic-gradient('+col+' '+pct+'deg, rgba(255,255,255,0.08) '+pct+'deg)';
+  }
+
+  function tiHandleInput(val) {
+    if(!tiRunning) return;
+    tiCurrentInput=val;
+    var len=val.length;
+    var correct=0,errors=0;
+    for(var i=0;i<len;i++){
+      if(i<tiText.length && val[i]===tiText[i]) correct++;
+      else errors++;
+    }
+    tiTyped=len;
+    tiErrors=errors;
+    // progress
+    var pct=(len/tiText.length)*100;
+    document.getElementById('tiProgressFill').style.width=Math.min(100,pct)+'%';
+    // if completed text, add new phrase chunk
+    if(len>=tiText.length-5){
+      tiText+=' '+tiPhrases[Math.floor(Math.random()*tiPhrases.length)];
+    }
+    tiRenderText();
+  }
+
+  function tiRenderText() {
+    var display=document.getElementById('tiTextDisplay');
+    var out='', inp=tiCurrentInput;
+    for(var i=0;i<tiText.length;i++){
+      var ch=tiText[i]==' '?'&nbsp;':tiText[i];
+      var cls='ti-char';
+      if(i<inp.length){
+        cls+=inp[i]===tiText[i]?' correct':' wrong';
+      } else if(i===inp.length){
+        cls+=' cursor';
+      }
+      out+='<span class="'+cls+'">'+ch+'</span>';
+      if(i>inp.length+80) break; // don't render too far ahead
+    }
+    display.innerHTML=out;
+  }
+
+  function tiFinish() {
+    clearInterval(tiTimer); tiRunning=false;
+    document.getElementById('tiInput').blur();
+    var elapsed=(Date.now()-tiStartTime)/60000;
+    var wpm=elapsed>0?Math.round((tiTyped/5)/elapsed):0;
+    var acc=tiTyped>0?Math.round(((tiTyped-tiErrors)/tiTyped)*100):100;
+    // grade
+    var grade,color;
+    if(wpm>=120){grade='INSANE';color='#00ffcc';}
+    else if(wpm>=90){grade='BLAZING FAST';color='#00ff88';}
+    else if(wpm>=70){grade='SPEEDY';color='#44ff88';}
+    else if(wpm>=50){grade='ABOVE AVERAGE';color='#ffdd44';}
+    else if(wpm>=30){grade='AVERAGE';color='#ffaa44';}
+    else{grade='KEEP PRACTICING';color='#ff7744';}
+    document.getElementById('tiPlaying').style.display='none';
+    document.getElementById('tiResult').style.display='flex';
+    document.getElementById('tiGrade').textContent=grade;
+    document.getElementById('tiGrade').style.color=color;
+    document.getElementById('tiResWPM').textContent=wpm;
+    document.getElementById('tiResWPM').style.color=color;
+    document.getElementById('tiResAcc').textContent=acc;
+    document.getElementById('tiResChars').textContent=tiTyped;
+    document.getElementById('tiResErrors').textContent=tiErrors;
+    document.getElementById('tiWPM').textContent=wpm;
+    document.getElementById('tiAcc').textContent=acc;
+  }
+
   </script>
   <!-- COLOR MAKER OVERLAY -->
   <div id="cm-overlay" class="overlay">
@@ -1927,6 +2407,120 @@ window.addEventListener("DOMContentLoaded",function(){
       <div class="odd-end-score" id="oddEndScore">0</div>
       <div class="odd-end-msg" id="oddEndMsg"></div>
       <button class="odd-restart" onclick="startOddOne()">Play Again</button>
+    </div>
+  </div>
+
+
+  <!-- GUESS THE YEAR OVERLAY -->
+  <div id="gy-overlay" class="overlay">
+    <div class="gy-back-bar">
+      <button class="back-btn" onclick="closeGY()">&#8592; back</button>
+      <span class="back-site" style="color:rgba(255,255,255,0.3);">CREATIVITYFORALL.FUN</span>
+      <div class="gy-hud">
+        <div class="gy-stat"><div class="gy-stat-num" id="gyScore">0</div><div class="gy-stat-label">Score</div></div>
+        <div class="gy-stat"><div class="gy-stat-num" id="gyRoundNum">1</div><div class="gy-stat-label">Round</div></div>
+      </div>
+    </div>
+
+    <div class="gy-game-area" id="gyGameArea">
+      <div class="gy-round" id="gyRoundLabel">ROUND 1 OF 8</div>
+
+      <div class="gy-event-card" id="gyCard">
+        <span class="gy-event-emoji" id="gyEmoji">📅</span>
+        <div class="gy-event-text" id="gyEventText">Loading...</div>
+        <div class="gy-event-category" id="gyCategory"></div>
+      </div>
+
+      <!-- Slider section -->
+      <div class="gy-slider-wrap" id="gySliderWrap">
+        <div class="gy-year-display" id="gyYearDisplay">1950</div>
+        <input type="range" id="gySlider" min="1700" max="2024" value="1950" oninput="gySliderMove(this.value)" />
+        <div class="gy-slider-labels"><span>1700</span><span>1800</span><span>1900</span><span>2000</span><span>2024</span></div>
+      </div>
+
+      <button class="gy-lock-btn" id="gyLockBtn" onclick="gyLockIn()">Lock In &#128274;</button>
+
+      <!-- Result (shown after lock) -->
+      <div class="gy-result-wrap" id="gyResultWrap" style="display:none;">
+        <div class="gy-result-labels">
+          <div class="gy-your-guess" id="gyYourGuess">Your guess: 1950</div>
+          <div class="gy-actual-year" id="gyActualYear" style="color:#fff;">Actual: 1969</div>
+        </div>
+        <div class="gy-result-bar"><div class="gy-result-fill" id="gyResultFill"></div></div>
+        <div class="gy-verdict" id="gyVerdict"></div>
+        <div class="gy-score-earned" id="gyScoreEarned"></div>
+        <div class="gy-score-label">points earned</div>
+        <button class="gy-next-btn" id="gyNextBtn" onclick="gyNext()">Next event &#8594;</button>
+      </div>
+    </div>
+
+    <!-- End screen -->
+    <div class="gy-end" id="gyEnd">
+      <div class="gy-end-label">Final Score</div>
+      <div class="gy-end-score" id="gyEndScore">0</div>
+      <div class="gy-end-msg" id="gyEndMsg"></div>
+      <button class="gy-replay" onclick="startGY()">Play Again</button>
+    </div>
+  </div>
+
+
+  <!-- TYPE IT! OVERLAY -->
+  <div id="typeit-overlay" class="overlay">
+    <div class="ti-back-bar">
+      <button class="back-btn" onclick="closeTI()">&#8592; back</button>
+      <span class="back-site" style="color:rgba(255,255,255,0.25);">CREATIVITYFORALL.FUN</span>
+      <div class="ti-hud">
+        <div class="ti-stat"><div class="ti-stat-num" id="tiWPM">0</div><div class="ti-stat-label">WPM</div></div>
+        <div class="ti-stat"><div class="ti-stat-num" id="tiAcc">100</div><div class="ti-stat-label">Acc %</div></div>
+      </div>
+    </div>
+    <div class="ti-game-area" id="tiGameArea">
+      <!-- IDLE screen -->
+      <div id="tiIdle" style="display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:0.1em;color:#fff;">TYPE IT!</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;max-width:280px;">Type the text as fast and accurately as you can. You have 30 seconds. Ready?</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+          <button class="ti-start-btn" onclick="startTI(30)">30s</button>
+          <button class="ti-start-btn" style="background:rgba(0,255,136,0.15);color:#00ff88;box-shadow:none;border:1.5px solid rgba(0,255,136,0.3);" onclick="startTI(60)">60s</button>
+        </div>
+      </div>
+
+      <!-- PLAYING screen -->
+      <div id="tiPlaying" style="display:none;flex-direction:column;align-items:center;gap:18px;width:100%;">
+        <div style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:540px;">
+          <div class="ti-round-label" id="tiModeLabel">30 SECONDS</div>
+          <div class="ti-timer-ring" id="tiTimerRing">
+            <div class="ti-timer-inner" id="tiTimerNum">30</div>
+          </div>
+        </div>
+        <div class="ti-progress-wrap"><div class="ti-progress-fill" id="tiProgressFill"></div></div>
+        <div class="ti-text-display" id="tiTextDisplay"></div>
+        <input type="text" id="tiInput" placeholder="Start typing..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" oninput="tiHandleInput(this.value)" />
+      </div>
+
+      <!-- RESULT screen -->
+      <div id="tiResult" style="display:none;flex-direction:column;align-items:center;gap:16px;">
+        <div class="ti-wpm-grade" id="tiGrade" style="color:#00ff88;">BLAZING FAST</div>
+        <div class="ti-result-grid">
+          <div class="ti-result-card">
+            <div class="ti-result-num" id="tiResWPM" style="color:#00ff88;">0</div>
+            <div class="ti-result-unit">Words / Min</div>
+          </div>
+          <div class="ti-result-card">
+            <div class="ti-result-num" id="tiResAcc">0</div>
+            <div class="ti-result-unit">Accuracy %</div>
+          </div>
+          <div class="ti-result-card">
+            <div class="ti-result-num" id="tiResChars">0</div>
+            <div class="ti-result-unit">Chars Typed</div>
+          </div>
+          <div class="ti-result-card">
+            <div class="ti-result-num" id="tiResErrors" style="color:#ff4444;">0</div>
+            <div class="ti-result-unit">Errors</div>
+          </div>
+        </div>
+        <button class="ti-again-btn" onclick="tiShowIdle()">Try again</button>
+      </div>
     </div>
   </div>
 
