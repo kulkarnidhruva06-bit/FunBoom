@@ -80,6 +80,75 @@
     .mats-opt.wrong   { border-color: #e05050; background: rgba(224,80,80,0.12); color: #f08080; pointer-events: none; }
     .mats-opt.reveal  { border-color: rgba(76,175,137,0.45); background: transparent; color: rgba(255,255,255,0.28); pointer-events: none; }
     .mats-opt.disabled { pointer-events: none; opacity: 0.3; }
+
+    .galaxy-shell { flex: 1; width: 100%; display: flex; flex-direction: column; gap: 16px; padding: 18px 22px 24px; overflow-y: auto; }
+    .galaxy-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .galaxy-kicker { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+    .galaxy-title { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.08em; color: #fff; line-height: 1; }
+    .galaxy-chip { font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 7px 12px; background: rgba(255,255,255,0.04); }
+    .galaxy-map {
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: #0a0e1a;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 25px 60px rgba(0,0,0,0.28);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .galaxy-map::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12), rgba(255,255,255,0) 36%),
+        conic-gradient(from 180deg, rgba(118,184,255,0.1), rgba(255,255,255,0.4) 18%, rgba(137,115,255,0.2) 32%, rgba(255,255,255,0.05) 44%, rgba(255,255,255,0.24) 60%, rgba(91,143,255,0.12) 78%, rgba(255,255,255,0.2) 100%);
+      filter: blur(0.4px);
+      opacity: 0.7;
+      transform: rotate(12deg);
+    }
+    .galaxy-spot {
+      position: absolute; transform: translate(-50%, -50%); width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.7);
+      display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow: 0 0 0 4px rgba(255,255,255,0.08), 0 0 20px rgba(255,255,255,0.16);
+      color:#fff; font-size: 16px; transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.95), rgba(255,255,255,0.55) 20%, rgba(12,20,42,0.95) 70%);
+    }
+    .galaxy-spot.active { transform: translate(-50%, -50%) scale(1.28); box-shadow: 0 0 0 6px rgba(255,255,255,0.16), 0 0 28px rgba(255,255,255,0.4); }
+    .galaxy-focus { display:flex; flex-direction:column; gap:12px; border-radius:24px; padding:18px 18px 20px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
+    .galaxy-focus-head { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .galaxy-focus-badge { font-size:9px; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.18em; border:1px solid rgba(255,255,255,0.16); border-radius:999px; padding:5px 10px; background:rgba(255,255,255,0.04); }
+    .galaxy-focus-hero { width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08); box-shadow:0 0 22px rgba(255,255,255,0.18); }
+    .galaxy-focus-title { font-family:'Bebas Neue',sans-serif; font-size:30px; letter-spacing:0.08em; color:#fff; }
+    .galaxy-focus-desc { font-size:12px; color:rgba(255,255,255,0.66); line-height:1.65; }
+    .galaxy-focus-detail { font-size:11px; color:rgba(255,255,255,0.42); line-height:1.7; }
+
+    .element-lab { flex:1; width:100%; display:flex; flex-direction:column; gap:16px; padding:18px 22px 24px; overflow-y:auto; }
+    .element-lab-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .element-lab-kicker { font-size:10px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:6px; }
+    .element-lab-title { font-family:'Bebas Neue',sans-serif; font-size:34px; letter-spacing:0.08em; color:#fff; line-height:1; }
+    .element-lab-copy { font-size:11px; color:rgba(255,255,255,0.46); max-width:420px; line-height:1.65; }
+    .element-workbench { display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap:12px; border-radius:24px; border:1px solid rgba(255,255,255,0.12); padding:16px; background:rgba(255,255,255,0.06); }
+    .element-slot { min-height:82px; border-radius:18px; padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); text-align:center; }
+    .element-slot-symbol { font-size:26px; font-weight:700; color:#fff; }
+    .element-slot-name { font-size:10px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.14em; }
+    .element-slot-placeholder { font-size:11px; color:rgba(255,255,255,0.32); }
+    .element-combine-sign { font-size:24px; color:rgba(255,255,255,0.6); }
+    .element-palette { display:grid; grid-template-columns: repeat(4,1fr); gap:10px; max-width:760px; }
+    .element-tile { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; min-height:78px; border-radius:16px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.05); cursor:pointer; transition: transform 0.16s, border-color 0.16s, box-shadow 0.16s; }
+    .element-tile.selected { transform: translateY(-2px); box-shadow:0 0 0 2px rgba(255,255,255,0.5); }
+    .element-tile-symbol { font-size:24px; font-weight:700; color:#fff; }
+    .element-tile-name { font-size:9px; color:rgba(255,255,255,0.62); text-transform:uppercase; letter-spacing:0.14em; }
+    .reaction-panel { display:flex; flex-direction:column; gap:10px; border-radius:24px; padding:16px 18px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.06); }
+    .reaction-panel-title { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.08em; color:#fff; }
+    .reaction-panel-copy { font-size:12px; color:rgba(255,255,255,0.62); line-height:1.65; }
+    .reaction-result { display:flex; align-items:center; gap:12px; border-radius:18px; padding:14px 16px; background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.1); }
+    .reaction-result-icon { font-size:30px; }
+    .reaction-result-text { display:flex; flex-direction:column; gap:4px; }
+    .reaction-result-name { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.08em; color:#fff; }
+    .reaction-result-desc { font-size:11px; color:rgba(255,255,255,0.52); line-height:1.6; }
     .mats-feedback { text-align: center; min-height: 56px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
     .feedback-verdict { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.1em; }
     .feedback-fact { font-size: 11px; color: rgba(255,255,255,0.38); max-width: 340px; line-height: 1.65; font-style: italic; }
@@ -723,10 +792,10 @@
         <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d1a2f 0%,#103963 50%,#163b32 100%);"></div>
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;">
           <div style="font-size:40px;">🪐</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:rgba(255,255,255,0.85);letter-spacing:0.08em;">PLANET</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:rgba(255,255,255,0.85);letter-spacing:0.08em;">GALAXY</div>
         </div>
         <div class="card-label">
-          <div class="card-name">PLANET<br>POP</div>
+          <div class="card-name">GALAXY<br>MAKER</div>
           <div class="card-tag">space</div>
         </div>
       </div>
@@ -734,10 +803,10 @@
         <div style="position:absolute;inset:0;background:linear-gradient(135deg,#263238 0%,#37474f 50%,#546e7a 100%);"></div>
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;">
           <div style="font-size:40px;">⚗️</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:rgba(255,255,255,0.85);letter-spacing:0.08em;">ELEMENT</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:rgba(255,255,255,0.85);letter-spacing:0.08em;">LAB</div>
         </div>
         <div class="card-label">
-          <div class="card-name">ELEMENT<br>QUEST</div>
+          <div class="card-name">ELEMENT<br>REACTION</div>
           <div class="card-tag">chemistry</div>
         </div>
       </div>
@@ -1700,28 +1769,122 @@ window.addEventListener("DOMContentLoaded",function(){
   }
   function rxPlayAgain() { rxTimes=[]; rxState='idle'; rxRender(); }
 
-  var solarQuestions = [
-    { icon:"☀️", clue:"The smallest planet, closest to the Sun, with almost no atmosphere.", answer:"Mercury", category:"Space", fact:"Mercury can swing from -180°C at night to 430°C in daylight." },
-    { icon:"🌫️", clue:"A scorching world wrapped in toxic clouds and pressure hotter than an oven.", answer:"Venus", category:"Space", fact:"Venus rotates backwards, so the Sun rises in the west there." },
-    { icon:"🌎", clue:"The only planet known to have liquid water on its surface and life.", answer:"Earth", category:"Space", fact:"Earth is the only planet with plate tectonics, which recycles its crust." },
-    { icon:"🪐", clue:"A red world with the tallest volcano in the solar system, Olympus Mons.", answer:"Mars", category:"Space", fact:"Mars has the largest dust storms in the solar system, sometimes covering the whole planet." },
-    { icon:"☄️", clue:"The giant gas planet with a storm bigger than Earth called the Great Red Spot.", answer:"Jupiter", category:"Space", fact:"Jupiter is so massive that all the other planets could fit inside it." },
-    { icon:"💍", clue:"Famous for its rings, this gas giant is less dense than water.", answer:"Saturn", category:"Space", fact:"Saturn's rings are made of ice, rock, and dust, and may be only 10 meters thick in places." },
-    { icon:"🌀", clue:"An icy blue planet that rolls on its side like a spinning top.", answer:"Uranus", category:"Space", fact:"Uranus has seasons that last 21 years because of its sideways tilt." },
-    { icon:"🌊", clue:"The farthest known major planet, famous for deep blue winds and the nickname 'the windy planet'.", answer:"Neptune", category:"Space", fact:"Neptune's winds can exceed 2,000 km/h, the fastest in the solar system." }
+  var galaxyFeatures = [
+    { name: "Milky Way Core", icon: "✨", accent: "#ffd166", description: "The glowing heart of the galaxy is packed with dense stars, dust, and gas. It is the brightest and busiest region in the Milky Way.", detail: "Zoom in on the core to see the star-rich center where supermassive black hole activity shapes the neighborhood.", x: "50%", y: "52%" },
+    { name: "Orion Arm", icon: "🌟", accent: "#78d8ff", description: "This spiral arm is our home lane, carrying younger stars, bright nebulae, and the Sun's neighborhood.", detail: "The Orion Arm is one of the galaxy's quieter arms, with plenty of stardust and nearby star-forming regions.", x: "32%", y: "38%" },
+    { name: "Perseus Arm", icon: "🌀", accent: "#b0e0ff", description: "A major spiral arm filled with young stars, clusters, and nebulae.", detail: "The Perseus Arm is one of the most prominent arms, stretching far across the galaxy and rich in star-forming regions.", x: "70%", y: "30%" },
+    { name: "Sagittarius Arm", icon: "🌠", accent: "#ffb347", description: "A bright spiral arm with many star-forming regions and nebulae.", detail: "The Sagittarius Arm is home to the Eagle Nebula and other famous star nurseries.", x: "60%", y: "65%" },
+    { name: "Outer Arm", icon: "🌌", accent: "#c2bfff", description: "The faint, farthest spiral arm, full of ancient stars.", detail: "The Outer Arm marks the edge of the Milky Way's disk, with fewer new stars and more cosmic mysteries.", x: "85%", y: "20%" },
+    { name: "Norma Arm", icon: "🌑", accent: "#a0a0a0", description: "A dim spiral arm with older stars and dark clouds.", detail: "The Norma Arm is less visible but important for mapping the galaxy's structure.", x: "20%", y: "60%" },
+    { name: "Galactic Halo", icon: "🌙", accent: "#8aa0ff", description: "The halo wraps around the bright disk with older stars, clusters, and a faint outer glow.", detail: "This outer zone stretches far beyond the spinning spiral, giving the galaxy a wide, shimmering halo.", x: "10%", y: "10%" },
+    { name: "Cygnus X", icon: "🦢", accent: "#e0bfff", description: "A powerful X-ray source and star-forming region.", detail: "Cygnus X is one of the strongest X-ray sources in the sky, home to black holes and massive stars.", x: "40%", y: "20%" },
+    { name: "Tarantula Nebula", icon: "🕷️", accent: "#ffb3b3", description: "A giant star-forming nebula in a nearby galaxy.", detail: "The Tarantula Nebula is the largest known starburst region in the Local Group of galaxies.", x: "80%", y: "80%" },
+    { name: "Star Cluster M13", icon: "💫", accent: "#fff7b2", description: "A dense ball of hundreds of thousands of stars.", detail: "M13 is a globular cluster in the halo, visible with binoculars on a clear night.", x: "60%", y: "10%" }
   ];
-  var elementQuestions = [
-    { symbol:"H", clue:"This gas fuels stars and is the first element on the periodic table.", answer:"Hydrogen", category:"Chemistry", fact:"Hydrogen is the lightest element and makes up most of the normal matter in the universe." },
-    { symbol:"O", clue:"This gas makes up about 21% of Earth's air and is essential for breathing.", answer:"Oxygen", category:"Chemistry", fact:"Oxygen was discovered in the 1770s and is the most abundant element by mass in Earth's crust." },
-    { symbol:"Au", clue:"A shiny yellow metal used for jewelry and coins for thousands of years.", answer:"Gold", category:"Chemistry", fact:"Gold is very unreactive, which is why it doesn't tarnish and is still found in jewelry after centuries." },
-    { symbol:"Fe", clue:"This metal is the main ingredient in steel and is found in red blood cells.", answer:"Iron", category:"Chemistry", fact:"Iron is the most used metal in the world and is also the main component of Earth's core." },
-    { symbol:"C", clue:"This element forms diamonds, graphite, and is the basis of all known life.", answer:"Carbon", category:"Chemistry", fact:"Carbon atoms can bond in many different ways, which is why it's the foundation of organic chemistry." },
-    { symbol:"Ne", clue:"A noble gas used in glowing signs and bright red-orange lights.", answer:"Neon", category:"Chemistry", fact:"Neon lights were first demonstrated in 1910 and became popular for signs in the 1920s." },
-    { symbol:"Na", clue:"A soft metal that is a key part of table salt.", answer:"Sodium", category:"Chemistry", fact:"Pure sodium reacts explosively with water, but combined with chlorine it forms edible salt." },
-    { symbol:"Si", clue:"A hard metalloid used to make computer chips and glass.", answer:"Silicon", category:"Chemistry", fact:"Silicon is the second most abundant element in Earth's crust after oxygen." }
+  var selectedGalaxy = galaxyFeatures[0];
+  var elementPalette = [
+    { symbol: "H", name: "Hydrogen", accent: "#7bd7ff" },
+    { symbol: "O", name: "Oxygen", accent: "#7fe2ce" },
+    { symbol: "C", name: "Carbon", accent: "#aef0a2" },
+    { symbol: "N", name: "Nitrogen", accent: "#b0e0ff" },
+    { symbol: "Na", name: "Sodium", accent: "#f6cd6d" },
+    { symbol: "Cl", name: "Chlorine", accent: "#b6ffb3" },
+    { symbol: "Fe", name: "Iron", accent: "#f9a56e" },
+    { symbol: "Si", name: "Silicon", accent: "#c8bbff" },
+    { symbol: "Au", name: "Gold", accent: "#ffe27a" },
+    { symbol: "Ne", name: "Neon", accent: "#ff9acc" },
+    { symbol: "He", name: "Helium", accent: "#e0e7ff" },
+    { symbol: "Ca", name: "Calcium", accent: "#fff7b2" },
+    { symbol: "Mg", name: "Magnesium", accent: "#b2ffd6" },
+    { symbol: "Al", name: "Aluminum", accent: "#d6eaff" },
+    { symbol: "Ag", name: "Silver", accent: "#e6e6e6" },
+    { symbol: "Cu", name: "Copper", accent: "#e6b877" }
   ];
-  var solarQueue=[], solarIndex=0, solarScore=0, solarAnswered=false;
-  var elementQueue=[], elementIndex=0, elementScore=0, elementAnswered=false;
+  var selectedElements = [];
+  var lastReaction = null;
+  var reactionMap = {
+    "Carbon|Hydrogen": { result: "Methane", icon: "🔥", description: "Carbon and hydrogen bond into methane, a simple fuel gas made of linked C-H bonds." },
+    "Hydrogen|Oxygen": { result: "Water", icon: "💧", description: "Hydrogen and oxygen combine into water, the life-giving molecule that fills rivers, clouds, and cells." },
+    "Carbon|Oxygen": { result: "Carbon Dioxide", icon: "🌫️", description: "Carbon and oxygen form carbon dioxide, a gas that plants use and that shows up in fizzing reactions." },
+    "Sodium|Oxygen": { result: "Sodium Oxide", icon: "✨", description: "Sodium reacts with oxygen to form a bright metal oxide, a classic reactive chemistry display." },
+    "Iron|Oxygen": { result: "Rust", icon: "🟥", description: "Iron and oxygen combine into rust, the orange-red layer that forms on metal over time." },
+    "Silicon|Oxygen": { result: "Silica", icon: "🪟", description: "Silicon and oxygen bond into silica, the mineral backbone of glass and many sandy materials." },
+    "Sodium|Chlorine": { result: "Table Salt (NaCl)", icon: "🧂", description: "Sodium and chlorine combine to form table salt, essential for life and flavor." },
+    "Calcium|Carbon|Oxygen": { result: "Calcium Carbonate", icon: "🦴", description: "Calcium, carbon, and oxygen form calcium carbonate, found in shells, chalk, and bones." },
+    "Hydrogen|Nitrogen": { result: "Ammonia", icon: "💨", description: "Hydrogen and nitrogen combine to make ammonia, a key ingredient in fertilizers." },
+    "Magnesium|Oxygen": { result: "Magnesium Oxide", icon: "⚪", description: "Magnesium and oxygen form magnesium oxide, a white powder used in medicine and fireproofing." },
+    "Aluminum|Oxygen": { result: "Aluminum Oxide", icon: "⚙️", description: "Aluminum and oxygen create aluminum oxide, used as an abrasive and in making rubies and sapphires." },
+    "Copper|Oxygen": { result: "Copper Oxide", icon: "🟤", description: "Copper and oxygen form copper oxide, giving old copper roofs their green patina." },
+    "Silver|Sulfur": { result: "Silver Sulfide (Tarnish)", icon: "🪙", description: "Silver and sulfur combine to make silver sulfide, the black tarnish on old silverware." },
+    "Hydrogen|Chlorine": { result: "Hydrochloric Acid", icon: "🧪", description: "Hydrogen and chlorine form hydrochloric acid, found in your stomach!" },
+    "Neon|Electricity": { result: "Neon Light", icon: "🔴", description: "Neon and electricity make neon lights glow bright red-orange." },
+    "Iron|Sulfur": { result: "Iron Sulfide", icon: "⚫", description: "Iron and sulfur combine to make iron sulfide, found in some minerals and meteorites." },
+    "Hydrogen|Helium": { result: "Star Fusion", icon: "☀️", description: "Hydrogen fuses into helium in stars, releasing huge amounts of energy as starlight." }
+  };
+
+  function generateGalaxyImage() {
+    var canvas = document.createElement('canvas');
+    canvas.width = 1200;
+    canvas.height = 1200;
+    var ctx = canvas.getContext('2d');
+    var centerX = 600, centerY = 600;
+
+    // Black background
+    ctx.fillStyle = '#0a0e1a';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw background stars
+    for (var i = 0; i < 3000; i++) {
+      var x = Math.random() * canvas.width;
+      var y = Math.random() * canvas.height;
+      var brightness = Math.floor(Math.random() * 150 + 100);
+      ctx.fillStyle = 'rgb(' + brightness + ',' + brightness + ',' + brightness + ')';
+      ctx.fillRect(x, y, 1, 1);
+    }
+
+    // Draw spiral galaxy arms
+    for (var angle = 0; angle < 360; angle += 3) {
+      var rad = angle * Math.PI / 180;
+      for (var radius = 50; radius < 380; radius += 12) {
+        var spiralAngle = rad + (radius / 40);
+        var x = centerX + Math.cos(spiralAngle) * radius;
+        var y = centerY + Math.sin(spiralAngle) * radius;
+        
+        var intensity = 1 - (radius / 380);
+        
+        // Color based on distance
+        var r, g, b;
+        if (radius < 120) {
+          r = Math.floor(255 * intensity);
+          g = Math.floor(200 * intensity);
+          b = Math.floor(100 * intensity);
+        } else if (radius < 240) {
+          r = Math.floor(220 * intensity);
+          g = Math.floor(150 * intensity);
+          b = Math.floor(200 * intensity);
+        } else {
+          r = Math.floor(120 * intensity);
+          g = Math.floor(80 * intensity);
+          b = Math.floor(180 * intensity);
+        }
+        
+        ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+        ctx.beginPath();
+        ctx.arc(x, y, 2 + intensity * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Apply blur with composite
+    var blurCanvas = document.createElement('canvas');
+    blurCanvas.width = canvas.width;
+    blurCanvas.height = canvas.height;
+    var blurCtx = blurCanvas.getContext('2d');
+    blurCtx.filter = 'blur(4px)';
+    blurCtx.drawImage(canvas, 0, 0);
+
+    return blurCanvas.toDataURL('image/png');
+  }
 
   function closeActiveOverlays() {
     document.querySelectorAll('.overlay.active').forEach(function(el){ el.classList.remove('active'); });
@@ -1729,129 +1892,114 @@ window.addEventListener("DOMContentLoaded",function(){
   function openSolar() { closeActiveOverlays(); document.getElementById("contactBtn").style.display="none"; document.getElementById("solar-overlay").classList.add("active"); startSolar(); }
   function closeSolar() { document.getElementById("contactBtn").style.display="block"; document.getElementById("solar-overlay").classList.remove("active"); }
   function startSolar() {
-    solarScore=0; solarIndex=0; solarAnswered=false;
-    solarQueue=shuffle(solarQuestions.slice()).slice(0,8);
-    document.getElementById("solarScore").textContent="0";
-    document.getElementById("solarRound").textContent="1";
-    document.getElementById("solarEnd").classList.remove("show");
-    document.getElementById("solarGameArea").style.display="flex";
-    document.getElementById("solarNextBtn").style.display="none";
-    document.getElementById("solarFeedback").innerHTML="";
-    loadSolar();
+    var galaxyDataUrl = generateGalaxyImage();
+    document.getElementById("galaxyMap").style.backgroundImage = 'url(' + galaxyDataUrl + ')';
+    selectedGalaxy = galaxyFeatures[0];
+    renderGalaxyExplorer();
   }
-  function loadSolar() {
-    solarAnswered=false;
-    var q=solarQueue[solarIndex];
-    document.getElementById("solarRoundLabel").textContent="ROUND "+(solarIndex+1)+" OF "+solarQueue.length;
-    document.getElementById("solarRound").textContent=solarIndex+1;
-    document.getElementById("solarEmoji").textContent=q.icon;
-    document.getElementById("solarClue").textContent=q.clue;
-    document.getElementById("solarCategory").textContent=q.category;
-    var opts=shuffle([q.answer].concat(shuffle(solarQuestions.filter(function(item){return item.answer!==q.answer;})).slice(0,3).map(function(item){return item.answer;})));
-    var container=document.getElementById("solarOptions");
+  function renderGalaxyExplorer() {
+    var container=document.getElementById("galaxyMap");
     container.innerHTML="";
-    opts.forEach(function(opt){
-      var btn=document.createElement("button");
-      btn.className="mats-opt";
-      btn.textContent=opt;
-      btn.onclick=function(){ solarAnswer(opt,q,btn); };
-      container.appendChild(btn);
+    galaxyFeatures.forEach(function(feature,index){
+      var spot=document.createElement("button");
+      spot.className="galaxy-spot";
+      spot.dataset.index=index;
+      if (feature.name===selectedGalaxy.name) spot.classList.add("active");
+      spot.style.left=feature.x;
+      spot.style.top=feature.y;
+      spot.innerHTML="<span>"+feature.icon+"</span>";
+      spot.onclick=function(){ selectGalaxy(galaxyFeatures[Number(spot.dataset.index)]); };
+      container.appendChild(spot);
     });
-    document.getElementById("solarFeedback").innerHTML="";
-    document.getElementById("solarNextBtn").style.display="none";
+    updateGalaxyFocus();
   }
-  function solarAnswer(chosen,q,btn) {
-    if (solarAnswered) return;
-    solarAnswered=true;
-    var correct=chosen===q.answer;
-    if (correct) { solarScore++; document.getElementById("solarScore").textContent=solarScore; btn.classList.add("correct"); }
-    else {
-      btn.classList.add("wrong");
-      document.querySelectorAll("#solarOptions .mats-opt").forEach(function(el){
-        if (el.textContent===q.answer) el.classList.add("reveal");
-        else if (el!==btn) el.classList.add("disabled");
-      });
-    }
-    document.getElementById("solarFeedback").innerHTML=
-      "<div class='feedback-verdict' style='color:"+(correct?"#6de8b3":"#f08080")+"'>"+(correct?"CORRECT!":"NOT QUITE")+"</div>"+
-      "<div class='feedback-fact'>"+q.fact+"</div>";
-    document.getElementById("solarNextBtn").style.display="inline-block";
+  function selectGalaxy(feature) {
+    selectedGalaxy=feature;
+    document.querySelectorAll(".galaxy-spot").forEach(function(node){ node.classList.remove("active"); });
+    document.querySelectorAll(".galaxy-spot").forEach(function(node){
+      if (Number(node.dataset.index)===galaxyFeatures.indexOf(feature)) node.classList.add("active");
+    });
+    updateGalaxyFocus();
   }
-  function solarNext() {
-    solarIndex++;
-    if (solarIndex>=solarQueue.length) { showSolarEnd(); }
-    else { loadSolar(); }
-  }
-  function showSolarEnd() {
-    document.getElementById("solarGameArea").style.display="none";
-    document.getElementById("solarEnd").classList.add("show");
-    document.getElementById("solarEndScore").textContent=solarScore;
-    var msgs=["Nice orbit! You learned a lot about planets.","Great! Your space knowledge is taking off.","Awesome! You’re becoming a planetary pro.","Stellar! The solar system is your playground.","Perfect! You’re basically in mission control."];
-    document.getElementById("solarEndMsg").textContent=msgs[Math.min(Math.floor(solarScore/solarQueue.length*5),msgs.length-1)];
+  function updateGalaxyFocus() {
+    document.getElementById("galaxyFocusTitle").textContent=selectedGalaxy.name;
+    document.getElementById("galaxyFocusHero").textContent=selectedGalaxy.icon;
+    document.getElementById("galaxyFocusDesc").textContent=selectedGalaxy.description;
+    document.getElementById("galaxyFocusDetail").textContent=selectedGalaxy.detail;
+    document.getElementById("galaxyFocusCard").style.borderColor=selectedGalaxy.accent;
+    document.getElementById("galaxyFocusCard").style.boxShadow="0 0 0 1px "+selectedGalaxy.accent+"33, 0 0 26px "+selectedGalaxy.accent+"22";
+    document.getElementById("galaxyFocusHero").style.boxShadow="0 0 24px "+selectedGalaxy.accent+"44";
+    document.getElementById("galaxyFocusHero").style.background="radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.45) 24%, "+selectedGalaxy.accent+"88 70%, rgba(3,8,20,0.95) 100%)";
+    document.getElementById("galaxyFocusBadge").textContent="Zoomed in: "+selectedGalaxy.name;
   }
 
   function openElementQuest() { closeActiveOverlays(); document.getElementById("contactBtn").style.display="none"; document.getElementById("element-overlay").classList.add("active"); startElementQuest(); }
   function closeElementQuest() { document.getElementById("contactBtn").style.display="block"; document.getElementById("element-overlay").classList.remove("active"); }
   function startElementQuest() {
-    elementScore=0; elementIndex=0; elementAnswered=false;
-    elementQueue=shuffle(elementQuestions.slice()).slice(0,8);
-    document.getElementById("elementScore").textContent="0";
-    document.getElementById("elementRound").textContent="1";
-    document.getElementById("elementEnd").classList.remove("show");
-    document.getElementById("elementGameArea").style.display="flex";
-    document.getElementById("elementNextBtn").style.display="none";
-    document.getElementById("elementFeedback").innerHTML="";
-    loadElement();
+    selectedElements=[];
+    lastReaction=null;
+    renderElementLab();
   }
-  function loadElement() {
-    elementAnswered=false;
-    var q=elementQueue[elementIndex];
-    document.getElementById("elementRoundLabel").textContent="ROUND "+(elementIndex+1)+" OF "+elementQueue.length;
-    document.getElementById("elementRound").textContent=elementIndex+1;
-    document.getElementById("elementSymbol").textContent=q.symbol;
-    document.getElementById("elementClue").textContent=q.clue;
-    document.getElementById("elementCategory").textContent=q.category;
-    var opts=shuffle([q.answer].concat(shuffle(elementQuestions.filter(function(item){return item.answer!==q.answer;})).slice(0,3).map(function(item){return item.answer;})));
-    var container=document.getElementById("elementOptions");
-    container.innerHTML="";
-    opts.forEach(function(opt){
+  function renderElementLab() {
+    var options=document.getElementById("elementOptions");
+    options.innerHTML="";
+    elementPalette.forEach(function(item){
       var btn=document.createElement("button");
-      btn.className="mats-opt";
-      btn.textContent=opt;
-      btn.onclick=function(){ elementAnswer(opt,q,btn); };
-      container.appendChild(btn);
+      btn.className="element-tile";
+      btn.innerHTML="<div class='element-tile-symbol'>"+item.symbol+"</div><div class='element-tile-name'>"+item.name+"</div>";
+      btn.style.borderColor=item.accent;
+      btn.style.boxShadow="0 0 0 1px "+item.accent+"33";
+      btn.onclick=function(){ pickElement(item); };
+      if (selectedElements.some(function(selected){ return selected.name===item.name; })) btn.classList.add("selected");
+      options.appendChild(btn);
     });
-    document.getElementById("elementFeedback").innerHTML="";
-    document.getElementById("elementNextBtn").style.display="none";
+    updateElementWorkbench();
   }
-  function elementAnswer(chosen,q,btn) {
-    if (elementAnswered) return;
-    elementAnswered=true;
-    var correct=chosen===q.answer;
-    if (correct) { elementScore++; document.getElementById("elementScore").textContent=elementScore; btn.classList.add("correct"); }
-    else {
-      btn.classList.add("wrong");
-      document.querySelectorAll("#elementOptions .mats-opt").forEach(function(el){
-        if (el.textContent===q.answer) el.classList.add("reveal");
-        else if (el!==btn) el.classList.add("disabled");
-      });
+  function pickElement(item) {
+    lastReaction=null;
+    var existing=selectedElements.findIndex(function(selected){ return selected.name===item.name; });
+    if (existing!==-1) {
+      selectedElements.splice(existing,1);
+    } else if (selectedElements.length<2) {
+      selectedElements.push(item);
+    } else {
+      selectedElements.shift();
+      selectedElements.push(item);
     }
-    document.getElementById("elementFeedback").innerHTML=
-      "<div class='feedback-verdict' style='color:"+(correct?"#6de8b3":"#f08080")+"'>"+(correct?"CORRECT!":"NOT QUITE")+"</div>"+
-      "<div class='feedback-fact'>"+q.fact+"</div>";
-    document.getElementById("elementNextBtn").style.display="inline-block";
+    renderElementLab();
   }
-  function elementNext() {
-    elementIndex++;
-    if (elementIndex>=elementQueue.length) { showElementEnd(); }
-    else { loadElement(); }
+    function updateElementWorkbench() {
+    var slotA=document.getElementById("elementSlotA");
+    var slotB=document.getElementById("elementSlotB");
+    var combineBtn=document.getElementById("combineBtn");
+    var reactionPanel=document.getElementById("reactionPanel");
+    if (selectedElements[0]) {
+      slotA.innerHTML="<div class='element-slot-symbol'>"+selectedElements[0].symbol+"</div><div class='element-slot-name'>"+selectedElements[0].name+"</div>";
+      slotA.style.borderColor=selectedElements[0].accent;
+    } else {
+      slotA.innerHTML="<div class='element-slot-placeholder'>Pick an element</div>";
+      slotA.style.borderColor="rgba(255,255,255,0.12)";
+    }
+    if (selectedElements[1]) {
+      slotB.innerHTML="<div class='element-slot-symbol'>"+selectedElements[1].symbol+"</div><div class='element-slot-name'>"+selectedElements[1].name+"</div>";
+      slotB.style.borderColor=selectedElements[1].accent;
+    } else {
+      slotB.innerHTML="<div class='element-slot-placeholder'>Pick another</div>";
+      slotB.style.borderColor="rgba(255,255,255,0.12)";
+    }
+    combineBtn.disabled = selectedElements.length < 2;
+    if (lastReaction) {
+      reactionPanel.innerHTML="<div class='reaction-panel-title'>Reaction complete</div><div class='reaction-result'><div class='reaction-result-icon'>"+lastReaction.icon+"</div><div class='reaction-result-text'><div class='reaction-result-name'>"+lastReaction.result+"</div><div class='reaction-result-desc'>"+lastReaction.description+"</div></div></div>";
+      return;
+    }
+    reactionPanel.innerHTML="<div class='reaction-panel-title'>Reaction chamber</div><div class='reaction-panel-copy'>Pick two elements to stir together. The lab will reveal the reaction, the product, and a quick science fact.</div>";
   }
-  function showElementEnd() {
-    document.getElementById("elementGameArea").style.display="none";
-    document.getElementById("elementEnd").classList.add("show");
-    document.getElementById("elementEndScore").textContent=elementScore;
-    var msgs=["You really steamed up chemistry class!","Nice work — you know your elements.","Great job! Those symbols are no mystery.","Impressive! You have an elemental advantage.","Perfect! You’re a periodic powerhouse."];
-    document.getElementById("elementEndMsg").textContent=msgs[Math.min(Math.floor(elementScore/elementQueue.length*5),msgs.length-1)];
+  function combineElements() {
+    if (selectedElements.length<2) return;
+    var key=selectedElements.map(function(item){ return item.name; }).sort().join("|");
+    lastReaction = reactionMap[key] || { result:"Unknown reaction", icon:"⚠️", description:"This pair isn't in the lab's reaction catalog yet." };
+    selectedElements=[];
+    renderElementLab();
   }
 
   // ========== ODD ONE OUT ==========
@@ -2266,26 +2414,26 @@ window.addEventListener("DOMContentLoaded",function(){
     <div class="gy-back-bar">
       <button class="back-btn" onclick="closeSolar()">&#8592; back</button>
       <span class="back-site">CREATIVITYFORALL.FUN</span>
-      <div class="gy-hud">
-        <div class="gy-stat"><div class="gy-stat-num" id="solarScore">0</div><div class="gy-stat-label">Score</div></div>
-        <div class="gy-stat"><div class="gy-stat-num" id="solarRound">1</div><div class="gy-stat-label">Round</div></div>
-      </div>
     </div>
-    <div class="gy-game-area" id="solarGameArea">
-      <div class="gy-round" id="solarRoundLabel">ROUND 1 OF 8</div>
-      <div class="gy-event-card" style="background:rgba(255,255,255,0.06);">
-        <span class="gy-event-emoji" id="solarEmoji">🪐</span>
-        <div class="gy-event-text" id="solarClue">Which planet am I?</div>
-        <div class="gy-event-category" id="solarCategory">Space</div>
+    <div class="galaxy-shell" id="solarGameArea">
+      <div class="galaxy-header">
+        <div>
+          <div class="galaxy-kicker">Galaxy explorer</div>
+          <div class="galaxy-title" id="galaxyTitle">MILKY WAY ZOOM</div>
+        </div>
+        <div class="galaxy-chip" id="galaxyHint">Tap any region to zoom in</div>
       </div>
-      <div class="mats-options" id="solarOptions"></div>
-      <div class="mats-feedback" id="solarFeedback"></div>
-      <button class="gy-lock-btn" id="solarNextBtn" onclick="solarNext()" style="display:none;">Next event &#8594;</button>
-      <div class="gy-end" id="solarEnd">
-        <div class="gy-end-label">Final Score</div>
-        <div class="gy-end-score" id="solarEndScore">0</div>
-        <div class="gy-end-msg" id="solarEndMsg"></div>
-        <button class="gy-replay" onclick="startSolar()">Play Again</button>
+      <div class="galaxy-map" id="galaxyMap"></div>
+      <div class="galaxy-focus" id="galaxyFocusCard">
+        <div class="galaxy-focus-head">
+          <div>
+            <div class="galaxy-focus-badge" id="galaxyFocusBadge">Zoomed in</div>
+            <div class="galaxy-focus-title" id="galaxyFocusTitle">Milky Way Core</div>
+          </div>
+          <div class="galaxy-focus-hero" id="galaxyFocusHero">✨</div>
+        </div>
+        <div class="galaxy-focus-desc" id="galaxyFocusDesc">The glowing heart of the galaxy is packed with dense stars, dust, and gas. It is the brightest and busiest region in the Milky Way.</div>
+        <div class="galaxy-focus-detail" id="galaxyFocusDetail">Zoom in on the core to see the star-rich center where supermassive black hole activity shapes the neighborhood.</div>
       </div>
     </div>
   </div>
@@ -2293,26 +2441,29 @@ window.addEventListener("DOMContentLoaded",function(){
     <div class="gy-back-bar">
       <button class="back-btn" onclick="closeElementQuest()">&#8592; back</button>
       <span class="back-site">CREATIVITYFORALL.FUN</span>
-      <div class="gy-hud">
-        <div class="gy-stat"><div class="gy-stat-num" id="elementScore">0</div><div class="gy-stat-label">Score</div></div>
-        <div class="gy-stat"><div class="gy-stat-num" id="elementRound">1</div><div class="gy-stat-label">Round</div></div>
-      </div>
     </div>
-    <div class="gy-game-area" id="elementGameArea">
-      <div class="gy-round" id="elementRoundLabel">ROUND 1 OF 8</div>
-      <div class="gy-event-card" style="background:rgba(255,255,255,0.06);">
-        <span class="gy-event-emoji" id="elementSymbol" style="font-size:56px;">H</span>
-        <div class="gy-event-text" id="elementClue">Which element is this?</div>
-        <div class="gy-event-category" id="elementCategory">Chemistry</div>
+    <div class="element-lab" id="elementGameArea">
+      <div class="element-lab-header">
+        <div>
+          <div class="element-lab-kicker">Combine & react</div>
+          <div class="element-lab-title">ELEMENT LAB</div>
+        </div>
+        <div class="element-lab-copy">Choose two elements, combine them, and watch the lab reveal a reaction. Every combination builds a new science story.</div>
       </div>
-      <div class="mats-options" id="elementOptions"></div>
-      <div class="mats-feedback" id="elementFeedback"></div>
-      <button class="gy-lock-btn" id="elementNextBtn" onclick="elementNext()" style="display:none;">Next element &#8594;</button>
-      <div class="gy-end" id="elementEnd">
-        <div class="gy-end-label">Final Score</div>
-        <div class="gy-end-score" id="elementEndScore">0</div>
-        <div class="gy-end-msg" id="elementEndMsg"></div>
-        <button class="gy-replay" onclick="startElementQuest()">Play Again</button>
+      <div class="element-workbench">
+        <div class="element-slot" id="elementSlotA">
+          <div class="element-slot-placeholder">Pick an element</div>
+        </div>
+        <div class="element-combine-sign">+</div>
+        <div class="element-slot" id="elementSlotB">
+          <div class="element-slot-placeholder">Pick another</div>
+        </div>
+      </div>
+      <button class="gy-lock-btn" id="combineBtn" onclick="combineElements()" disabled>Combine</button>
+      <div class="element-palette" id="elementOptions"></div>
+      <div class="reaction-panel" id="reactionPanel">
+        <div class="reaction-panel-title">Reaction chamber</div>
+        <div class="reaction-panel-copy">Pick two elements to stir together. The lab will reveal the reaction, the product, and a quick science fact.</div>
       </div>
     </div>
   </div>
