@@ -519,6 +519,7 @@
 
     /* ───── GUESS THE YEAR ───── */
     #gy-overlay { background: #0d1117; font-family: 'DM Sans', sans-serif; }
+    #solar-overlay, #element-overlay { background: #0d1117; font-family: 'DM Sans', sans-serif; }
     .gy-back-bar { width:100%; padding:14px 22px; display:flex; align-items:center; gap:12px; background:rgba(0,0,0,0.4); flex-shrink:0; }
     .gy-hud { margin-left:auto; display:flex; gap:20px; align-items:center; }
     .gy-stat { text-align:center; }
@@ -1722,7 +1723,10 @@ window.addEventListener("DOMContentLoaded",function(){
   var solarQueue=[], solarIndex=0, solarScore=0, solarAnswered=false;
   var elementQueue=[], elementIndex=0, elementScore=0, elementAnswered=false;
 
-  function openSolar() { document.getElementById("contactBtn").style.display="none"; document.getElementById("solar-overlay").classList.add("active"); startSolar(); }
+  function closeActiveOverlays() {
+    document.querySelectorAll('.overlay.active').forEach(function(el){ el.classList.remove('active'); });
+  }
+  function openSolar() { closeActiveOverlays(); document.getElementById("contactBtn").style.display="none"; document.getElementById("solar-overlay").classList.add("active"); startSolar(); }
   function closeSolar() { document.getElementById("contactBtn").style.display="block"; document.getElementById("solar-overlay").classList.remove("active"); }
   function startSolar() {
     solarScore=0; solarIndex=0; solarAnswered=false;
@@ -1786,7 +1790,7 @@ window.addEventListener("DOMContentLoaded",function(){
     document.getElementById("solarEndMsg").textContent=msgs[Math.min(Math.floor(solarScore/solarQueue.length*5),msgs.length-1)];
   }
 
-  function openElementQuest() { document.getElementById("contactBtn").style.display="none"; document.getElementById("element-overlay").classList.add("active"); startElementQuest(); }
+  function openElementQuest() { closeActiveOverlays(); document.getElementById("contactBtn").style.display="none"; document.getElementById("element-overlay").classList.add("active"); startElementQuest(); }
   function closeElementQuest() { document.getElementById("contactBtn").style.display="block"; document.getElementById("element-overlay").classList.remove("active"); }
   function startElementQuest() {
     elementScore=0; elementIndex=0; elementAnswered=false;
@@ -2301,7 +2305,7 @@ window.addEventListener("DOMContentLoaded",function(){
         <div class="gy-event-text" id="elementClue">Which element is this?</div>
         <div class="gy-event-category" id="elementCategory">Chemistry</div>
       </div>
-      <div class="mats-options" id="elementOptions"></div>git 
+      <div class="mats-options" id="elementOptions"></div>
       <div class="mats-feedback" id="elementFeedback"></div>
       <button class="gy-lock-btn" id="elementNextBtn" onclick="elementNext()" style="display:none;">Next element &#8594;</button>
       <div class="gy-end" id="elementEnd">
